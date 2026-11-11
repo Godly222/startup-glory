@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Glory - Entrepreneurs Learn. Grow. Impact Lives.</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        magenta: {
+                            50: '#fff1f4',
+                            100: '#ffe4e8',
+                            500: '#E60067',
+                            600: '#c40057',
+                            700: '#9e0046',
+                        },
+                        navy: {
+                            800: '#0f2a4a',
+                            900: '#0A192F',
+                            950: '#060f1e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAFAFB;
+            color: #0A192F;
+        }
+        .nav-active {
+            color: #E60067 !important;
+            font-weight: 800;
+            border-bottom: 2px solid #E60067;
+        }
+        .toast-slide {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(10, 25, 47, 0.05), 0 2px 6px -1px rgba(10, 25, 47, 0.03);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-magenta-500 selection:text-white text-navy-900">
+
+    <!-- TOP NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 sm:h-24">
+                
+                <!-- STARTUP GLORY UNIFIED BRAND LOGO -->
+                <div class="flex items-center cursor-pointer py-1" onclick="navigateTo('home')">
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-3">
+                            <svg class="h-10 sm:h-12 w-auto shrink-0" viewBox="0 0 120 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M60 6V14M22 22L28 28M98 22L92 28M10 60H18M102 60H110" stroke="#0A192F" stroke-width="4.5" stroke-linecap="round"/>
+                                <path d="M35 60C35 46.1929 46.1929 35 60 35C73.8071 35 85 46.1929 85 60C85 69.5 79.5 77.5 71.5 81.5V90H48.5V81.5C40.5 77.5 35 69.5 35 60Z" stroke="#0A192F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="white"/>
+                                <path d="M46 48L52 54L60 43L68 54L74 48V58H46V48Z" fill="#0A192F"/>
+                                <circle cx="46" cy="47" r="2" fill="#0A192F"/>
+                                <circle cx="60" cy="42" r="2.5" fill="#0A192F"/>
+                                <circle cx="74" cy="47" r="2" fill="#0A192F"/>
+                                <circle cx="44" cy="62" r="2.5" fill="#F97316"/>
+                                <path d="M39.5 69.5C39.5 66.5 41.5 65 44 65C46.5 65 48.5 66.5 48.5 69.5H39.5Z" fill="#F97316"/>
+                                <circle cx="52" cy="60" r="2.5" fill="#84CC16"/>
+                                <path d="M47.5 68C47.5 64.5 49.5 63 52 63C54.5 63 56.5 64.5 56.5 68H47.5Z" fill="#84CC16"/>
+                                <circle cx="60" cy="58" r="3" fill="#0EA5E9"/>
+                                <path d="M54.5 67.5C54.5 63.5 57 61.5 60 61.5C63 61.5 65.5 63.5 65.5 67.5H54.5Z" fill="#0EA5E9"/>
+                                <circle cx="68" cy="60" r="2.5" fill="#1D4ED8"/>
+                                <path d="M63.5 68C63.5 64.5 65.5 63 68 63C70.5 63 72.5 64.5 72.5 68H63.5Z" fill="#1D4ED8"/>
+                                <circle cx="76" cy="62" r="2.5" fill="#A855F7"/>
+                                <path d="M71.5 69.5C71.5 66.5 73.5 65 76 65C78.5 65 80.5 66.5 80.5 69.5H71.5Z" fill="#A855F7"/>
+                                <path d="M41 72.5C50 74.5 70 74.5 79 72.5" stroke="#0A192F" stroke-width="2" stroke-linecap="round"/>
+                                <text x="46" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#0A192F">S</text>
+                                <text x="54" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#E60067">U</text>
+                                <text x="63" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#0A192F">G</text>
+                                <rect x="47" y="89" width="26" height="4" rx="2" fill="#0A192F"/>
+                                <rect x="49" y="95" width="22" height="4" rx="2" fill="#0A192F"/>
+                                <rect x="51" y="101" width="18" height="4" rx="2" fill="#E60067"/>
+                                <rect x="53" y="107" width="14" height="4" rx="2" fill="#0A192F"/>
+                            </svg>
+                            
+                            <div class="flex flex-col leading-none">
+                                <span class="font-black text-navy-900 text-lg sm:text-xl tracking-tight">START<span class="text-magenta-500">UP</span></span>
+                                <span class="font-black text-navy-900 text-lg sm:text-xl tracking-tight -mt-0.5">GLORY</span>
+                            </div>
+                        </div>
+                        <span class="text-[10px] sm:text-[11px] font-bold text-navy-900/80 tracking-tight mt-0.5">Entrepreneurs Learn. Grow. Impact Lives.</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-7 text-sm font-bold text-navy-900">
+                    <button onclick="navigateTo('home')" id="nav-home" class="py-2 hover:text-magenta-500 transition-colors">Home</button>
+                    <button onclick="navigateTo('learning')" id="nav-learning" class="py-2 hover:text-magenta-500 transition-colors">Learning</button>
+                    <button onclick="navigateTo('mentorship')" id="nav-mentorship" class="py-2 hover:text-magenta-500 transition-colors">Mentorship</button>
+                    <button onclick="navigateTo('funding')" id="nav-funding" class="py-2 hover:text-magenta-500 transition-colors">Funding Hub</button>
+                </nav>
+
+                <!-- Auth Buttons -->
+                <div class="hidden md:flex items-center gap-3" id="auth-buttons-container">
+                    <button onclick="openModal('signInModal')" class="px-5 py-2.5 text-xs font-extrabold text-navy-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all border border-slate-200">
+                        Sign In
+                    </button>
+                    <button onclick="openModal('registerModal')" class="px-5 py-2.5 text-xs font-extrabold text-white bg-magenta-500 hover:bg-magenta-600 rounded-xl shadow-md shadow-magenta-500/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        Register Now
+                    </button>
+                </div>
+
+                <!-- Mobile Navigation Toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl text-navy-900 hover:bg-slate-100 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 bg-white px-6 pt-3 pb-6 space-y-3">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="block w-full text-left py-2 font-bold text-navy-900 hover:text-magenta-500">Home</button>
+            <button onclick="navigateTo('learning'); toggleMobileMenu()" class="block w-full text-left py-2 font-bold text-navy-900 hover:text-magenta-500">Learning</button>
+            <button onclick="navigateTo('mentorship'); toggleMobileMenu()" class="block w-full text-left py-2 font-bold text-navy-900 hover:text-magenta-500">Mentorship</button>
+            <button onclick="navigateTo('funding'); toggleMobileMenu()" class="block w-full text-left py-2 font-bold text-navy-900 hover:text-magenta-500">Funding Hub</button>
+            <div class="pt-4 flex flex-col gap-2">
+                <button onclick="openModal('signInModal'); toggleMobileMenu()" class="w-full py-2.5 font-bold text-navy-900 bg-slate-100 rounded-xl">Sign In</button>
+                <button onclick="openModal('registerModal'); toggleMobileMenu()" class="w-full py-2.5 font-bold text-white bg-magenta-500 rounded-xl shadow">Register Now</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN SPA VIEWS -->
+    <main class="flex-grow">
+
+        <!-- ==================== PAGE 1: HOME PAGE ==================== -->
+        <section id="page-home" class="page-view">
+            <div class="bg-gradient-to-b from-white via-slate-50 to-slate-100 py-12 md:py-16 border-b border-slate-200/60">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- HERO CONTAINER (DARK NAVY BOARDER CARD WITH 4-STAGE PIPELINE) -->
+                    <div class="bg-navy-900 rounded-3xl p-8 sm:p-12 text-white border-2 border-indigo-900/40 shadow-2xl relative overflow-hidden mb-12">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                        
+                        <div class="relative z-10 max-w-3xl mx-auto text-center">
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-magenta-500/20 border border-magenta-400/40 text-magenta-300 text-xs font-bold uppercase tracking-wider mb-6">
+                                <span class="w-2 h-2 rounded-full bg-magenta-500 animate-pulse"></span> End-to-End Entrepreneurial Incubator
+                            </div>
+
+                            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
+                                Learn. Get Mentored. Qualify. <br/>
+                                <span class="text-magenta-500">Go To Market & Scale.</span>
+                            </h1>
+
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+                                Startup Glory guides project creators through skill-building modules, 1-on-1 expert mentorship, community funding opportunities, and market entry execution.
+                            </p>
+
+                            <!-- 4-STAGE PIPELINE VISUALIZATION -->
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 bg-navy-950/80 p-4 rounded-2xl border border-indigo-800/40 mb-8">
+                                <div class="p-3 text-center rounded-xl bg-navy-900/60 border border-slate-700/50">
+                                    <div class="text-xs font-black text-magenta-400 uppercase">Stage 1</div>
+                                    <div class="text-sm font-bold text-white mt-0.5">LEARN</div>
+                                </div>
+                                <div class="p-3 text-center rounded-xl bg-navy-900/60 border border-slate-700/50">
+                                    <div class="text-xs font-black text-magenta-400 uppercase">Stage 2</div>
+                                    <div class="text-sm font-bold text-white mt-0.5">GET MENTORED</div>
+                                </div>
+                                <div class="p-3 text-center rounded-xl bg-navy-900/60 border border-slate-700/50">
+                                    <div class="text-xs font-black text-magenta-400 uppercase">Stage 3</div>
+                                    <div class="text-sm font-bold text-white mt-0.5">GET FUNDED</div>
+                                </div>
+                                <div class="p-3 text-center rounded-xl bg-magenta-500/20 border border-magenta-500/60">
+                                    <div class="text-xs font-black text-magenta-300 uppercase">Stage 4</div>
+                                    <div class="text-sm font-extrabold text-white mt-0.5">GO TO MARKET</div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap justify-center gap-4">
+                                <button onclick="navigateTo('learning')" class="px-7 py-3.5 bg-magenta-500 hover:bg-magenta-600 text-white font-extrabold text-xs rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+                                    Start Learning Path <i class="fa-solid fa-arrow-right ml-1"></i>
+                                </button>
+                                <button onclick="navigateTo('funding')" class="px-7 py-3.5 bg-white text-navy-900 hover:bg-slate-100 font-extrabold text-xs rounded-xl shadow-md transition-all">
+                                    Explore Funding Opportunities
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FEATURED ENTREPRENEURS -->
+                    <div class="mb-12">
+                        <h2 class="text-2xl font-black text-navy-900 mb-6">Featured Project Creators</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" class="h-44 w-full object-cover">
+                                <div class="p-5">
+                                    <div class="flex gap-2 mb-2">
+                                        <span class="px-2 py-0.5 bg-magenta-50 text-magenta-600 text-[10px] font-extrabold rounded">Women-Owned</span>
+                                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-extrabold rounded">GreenTech</span>
+                                    </div>
+                                    <h3 class="font-black text-navy-900 text-sm">Amina & SolarAgro Co.</h3>
+                                    <p class="text-xs font-bold text-navy-900/70 mt-0.5">Nairobi, Kenya • Africa</p>
+                                    <p class="text-xs text-navy-900/80 mt-2">🚀 GTM Phase: Solar Drip Kit Deployment in Local Markets</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" class="h-44 w-full object-cover">
+                                <div class="p-5">
+                                    <div class="flex gap-2 mb-2">
+                                        <span class="px-2 py-0.5 bg-indigo-50 text-indigo-700 text-[10px] font-extrabold rounded">Kingdom Entrepreneurs</span>
+                                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-extrabold rounded">GreenTech</span>
+                                    </div>
+                                    <h3 class="font-black text-navy-900 text-sm">Tunde's E-Waste Labs</h3>
+                                    <p class="text-xs font-bold text-navy-900/70 mt-0.5">Lagos, Nigeria • Africa</p>
+                                    <p class="text-xs text-navy-900/80 mt-2">🚀 GTM Phase: B2B E-Waste Collection Partnerships</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80" class="h-44 w-full object-cover">
+                                <div class="p-5">
+                                    <div class="flex gap-2 mb-2">
+                                        <span class="px-2 py-0.5 bg-magenta-50 text-magenta-600 text-[10px] font-extrabold rounded">Women-Owned</span>
+                                        <span class="px-2 py-0.5 bg-sky-50 text-sky-700 text-[10px] font-extrabold rounded">Education</span>
+                                    </div>
+                                    <h3 class="font-black text-navy-900 text-sm">Grace & CodeKids Hub</h3>
+                                    <p class="text-xs font-bold text-navy-900/70 mt-0.5">Birmingham, UK • Europe</p>
+                                    <p class="text-xs text-navy-900/80 mt-2">🚀 GTM Phase: Weekend Workshop Pilot Expansion</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ... existing learning & mentorship sections ... -->
+
+        <!-- ==================== PAGE 4: FUNDING PAGE ==================== -->
+        <section id="page-funding" class="page-view hidden">
+            <!-- Bright White & Emerald Header -->
+            <div class="bg-gradient-to-b from-emerald-50/40 via-white to-slate-50 py-16 border-b border-slate-200/60">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-4">
+                            <i class="fa-solid fa-hand-holding-heart"></i> Step 3: Qualify for Funding
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl font-black text-navy-900 tracking-tight mb-4 leading-tight">
+                            Community-Backed Projects. <br/><span class="text-magenta-500">Direct Capital Support.</span>
+                        </h1>
+                        <p class="text-slate-600 text-base mb-8 leading-relaxed">
+                            Through $25 community contributions, global supporters back project creators who have completed educational modules and earned mentor endorsement on Startup Glory.
+                        </p>
+                        
+                        <div class="flex flex-wrap items-center gap-4">
+                            <button onclick="switchKivaPillar('lend')" class="px-7 py-3.5 bg-magenta-500 hover:bg-magenta-600 text-white font-extrabold text-xs rounded-xl shadow-lg transition flex items-center gap-2">
+                                <i class="fa-solid fa-hand-holding-dollar"></i> Support a Venture ($25+)
+                            </button>
+                            <button onclick="switchKivaPillar('borrow')" class="px-7 py-3.5 bg-navy-900 hover:bg-slate-800 text-white font-extrabold text-xs rounded-xl shadow-md transition flex items-center gap-2">
+                                <i class="fa-solid fa-seedling"></i> Launch a Project Campaign
+                            </button>
+                            <button onclick="openModal('readinessModal')" class="px-7 py-3.5 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs rounded-xl border border-slate-300 shadow-xs transition flex items-center gap-2">
+                                <i class="fa-solid fa-graduation-cap"></i> Funding Readiness Prep
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Impact Stats Bar -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-8 border-t border-slate-200">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 card-shadow">
+                            <div class="text-2xl sm:text-3xl font-black text-navy-900" id="stat-total-funded">$1,245,600</div>
+                            <p class="text-xs text-slate-500 font-bold">Total Community Funding</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 card-shadow">
+                            <div class="text-2xl sm:text-3xl font-black text-emerald-600">96.4%</div>
+                            <p class="text-xs text-slate-500 font-bold">Milestone Completion Rate</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 card-shadow">
+                            <div class="text-2xl sm:text-3xl font-black text-navy-900">4,812</div>
+                            <p class="text-xs text-slate-500 font-bold">Projects Supported</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 card-shadow">
+                            <div class="text-2xl sm:text-3xl font-black text-magenta-500">100%</div>
+                            <p class="text-xs text-slate-500 font-bold">Goes to Project Creator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3-PILLAR NAVIGATION TAB -->
+            <div class="bg-white border-b border-slate-200 sticky top-24 z-30 shadow-xs">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-center sm:justify-start gap-4 py-3">
+                        <button onclick="switchKivaPillar('lend')" id="kiva-tab-lend" class="px-6 py-2.5 rounded-xl text-xs font-extrabold bg-magenta-500 text-white shadow-xs flex items-center gap-2 transition">
+                            <i class="fa-solid fa-coins"></i> 1. Support Projects
+                        </button>
+                        <button onclick="switchKivaPillar('borrow')" id="kiva-tab-borrow" class="px-6 py-2.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200 flex items-center gap-2 transition">
+                            <i class="fa-solid fa-user-gear"></i> 2. Apply for Backing
+                        </button>
+                        <button onclick="switchKivaPillar('partner')" id="kiva-tab-partner" class="px-6 py-2.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200 flex items-center gap-2 transition">
+                            <i class="fa-solid fa-handshake-simple"></i> 3. Partner With Us
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 1: SUPPORT VIEW (MARKETPLACE) -->
+            <div id="kiva-view-lend" class="py-12 bg-slate-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                        <div>
+                            <h2 class="text-2xl font-black text-navy-900">Active Funding Opportunities</h2>
+                            <p class="text-xs text-slate-500">Every project creator below has completed educational modules and earned mentor endorsement.</p>
+                        </div>
+
+                        <!-- REGION DROPDOWN & CATEGORY FILTERS -->
+                        <div class="flex flex-wrap items-center gap-2">
+                            <!-- Region Filter Dropdown -->
+                            <div class="relative">
+                                <select id="region-filter-select" onchange="applyLoanFilters()" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 border border-slate-300 shadow-xs focus:outline-none focus:border-magenta-500 cursor-pointer">
+                                    <option value="all">🌍 All Regions</option>
+                                    <option value="Africa">Africa</option>
+                                    <option value="Europe">Europe</option>
+                                    <option value="North America">North America</option>
+                                    <option value="Latin America">Latin America & Caribbean</option>
+                                    <option value="Asia">Asia & Pacific</option>
+                                </select>
+                            </div>
+
+                            <!-- Category Filters -->
+                            <button onclick="setCategoryFilter('all')" id="loan-filter-all" class="loan-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-extrabold bg-magenta-500 text-white">All Projects</button>
+                            <button onclick="setCategoryFilter('women')" id="loan-filter-women" class="loan-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">Women-Owned</button>
+                            <button onclick="setCategoryFilter('kingdom')" id="loan-filter-kingdom" class="loan-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">Kingdom Entrepreneurs</button>
+                            <button onclick="setCategoryFilter('greentech')" id="loan-filter-greentech" class="loan-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">GreenTech</button>
+                            <button onclick="setCategoryFilter('education')" id="loan-filter-education" class="loan-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">Education</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="loan-marketplace-grid">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: BORROW / APPLY VIEW -->
+            <div id="kiva-view-borrow" class="py-12 bg-white hidden">
+                <div class="max-w-3xl mx-auto px-4 text-center">
+                    <h3 class="text-2xl font-black text-navy-900 mb-2">Apply for Community Funding</h3>
+                    <p class="text-xs text-slate-500 mb-6">Complete the 4-stage path to qualify for your community-backed project funding campaign.</p>
+                    <button onclick="navigateTo('learning')" class="px-6 py-3 bg-magenta-500 text-white font-bold text-xs rounded-xl">Start Stage 1 Learning</button>
+                </div>
+            </div>
+
+            <!-- TAB 3: PARTNER VIEW -->
+            <div id="kiva-view-partner" class="py-12 bg-white hidden">
+                <div class="max-w-3xl mx-auto px-4 text-center">
+                    <h3 class="text-2xl font-black text-navy-900 mb-2">Partner with Startup Glory</h3>
+                    <p class="text-xs text-slate-500 mb-6">Join our network of educational providers, mentors, and non-profit impact sponsors.</p>
+                    <button onclick="showToast('Partnership inquiry received!')" class="px-6 py-3 bg-navy-900 text-white font-bold text-xs rounded-xl">Become an Impact Partner</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER NAV WITH UNIFIED BRAND LOCKUP ON DARK NAVY BACKGROUND -->
+    <footer class="bg-navy-900 border-t border-navy-800 text-slate-300 text-xs py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+                <!-- Unified Logo Lockup -->
+                <div class="flex items-center gap-3">
+                    <svg class="h-11 w-auto shrink-0" viewBox="0 0 120 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M60 6V14M22 22L28 28M98 22L92 28M10 60H18M102 60H110" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/>
+                        <path d="M35 60C35 46.1929 46.1929 35 60 35C73.8071 35 85 46.1929 85 60C85 69.5 79.5 77.5 71.5 81.5V90H48.5V81.5C40.5 77.5 35 69.5 35 60Z" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="#0A192F"/>
+                        <path d="M46 48L52 54L60 43L68 54L74 48V58H46V48Z" fill="#FFFFFF"/>
+                        <circle cx="44" cy="62" r="2.5" fill="#F97316"/>
+                        <path d="M39.5 69.5C39.5 66.5 41.5 65 44 65C46.5 65 48.5 66.5 48.5 69.5H39.5Z" fill="#F97316"/>
+                        <circle cx="52" cy="60" r="2.5" fill="#84CC16"/>
+                        <path d="M47.5 68C47.5 64.5 49.5 63 52 63C54.5 63 56.5 64.5 56.5 68H47.5Z" fill="#84CC16"/>
+                        <circle cx="60" cy="58" r="3" fill="#0EA5E9"/>
+                        <path d="M54.5 67.5C54.5 63.5 57 61.5 60 61.5C63 61.5 65.5 63.5 65.5 67.5H54.5Z" fill="#0EA5E9"/>
+                        <circle cx="68" cy="60" r="2.5" fill="#1D4ED8"/>
+                        <path d="M63.5 68C63.5 64.5 65.5 63 68 63C70.5 63 72.5 64.5 72.5 68H63.5Z" fill="#1D4ED8"/>
+                        <circle cx="76" cy="62" r="2.5" fill="#A855F7"/>
+                        <path d="M71.5 69.5C71.5 66.5 73.5 65 76 65C78.5 65 80.5 66.5 80.5 69.5H71.5Z" fill="#A855F7"/>
+                        <path d="M41 72.5C50 74.5 70 74.5 79 72.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                        <text x="46" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#FFFFFF">S</text>
+                        <text x="54" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#E60067">U</text>
+                        <text x="63" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#FFFFFF">G</text>
+                        <rect x="47" y="89" width="26" height="4" rx="2" fill="#FFFFFF"/>
+                        <rect x="49" y="95" width="22" height="4" rx="2" fill="#FFFFFF"/>
+                        <rect x="51" y="101" width="18" height="4" rx="2" fill="#E60067"/>
+                        <rect x="53" y="107" width="14" height="4" rx="2" fill="#FFFFFF"/>
+                    </svg>
+                    
+                    <div class="flex flex-col leading-none">
+                        <span class="font-black text-white text-xl tracking-tight">START<span class="text-magenta-500">UP</span></span>
+                        <span class="font-black text-white text-xl tracking-tight -mt-0.5">GLORY</span>
+                    </div>
+                </div>
+                <span class="text-xs font-semibold text-slate-300 tracking-tight mt-1.5">Entrepreneurs Learn. Grow. Impact Lives.</span>
+            </div>
+            
+            <p>&copy; 2026 Startup Glory Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL: BACK A PROJECT -->
+    <div id="lendModal" class="fixed inset-0 bg-navy-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative">
+            <button onclick="closeModal('lendModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-12 h-12 rounded-2xl bg-magenta-50 text-magenta-500 flex items-center justify-center text-xl font-bold mb-4">
+                <i class="fa-solid fa-heart font-bold"></i>
+            </div>
+            <h3 class="text-xl font-black text-navy-900 mb-1">Back <span id="lend-borrower-name" class="text-magenta-500">Project</span></h3>
+            <p class="text-xs text-slate-500 mb-6">100% of your community contribution goes directly to supporting this qualified project initiative.</p>
+
+            <form onsubmit="handleStripePayment(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-2">Select Contribution Amount</label>
+                    <div class="grid grid-cols-4 gap-2">
+                        <button type="button" onclick="setLendAmount(25)" class="lend-amt-btn py-2 border-2 border-magenta-500 bg-magenta-50 text-magenta-600 font-extrabold text-xs rounded-xl">$25</button>
+                        <button type="button" onclick="setLendAmount(50)" class="lend-amt-btn py-2 border border-slate-200 text-slate-700 font-bold text-xs rounded-xl hover:bg-slate-50">$50</button>
+                        <button type="button" onclick="setLendAmount(100)" class="lend-amt-btn py-2 border border-slate-200 text-slate-700 font-bold text-xs rounded-xl hover:bg-slate-50">$100</button>
+                        <button type="button" onclick="setLendAmount(250)" class="lend-amt-btn py-2 border border-slate-200 text-slate-700 font-bold text-xs rounded-xl hover:bg-slate-50">$250</button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Payment Method</label>
+                    <input type="text" required value="Stripe Secure Gateway" readonly class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-600 font-mono">
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" id="pay-submit-btn" class="w-full py-3.5 bg-magenta-500 hover:bg-magenta-600 text-white font-extrabold text-xs rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                        <span>Support Project $<span id="btn-pay-amount">25</span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: BECOME FUNDING READY (TRADITIONAL CAPITAL) -->
+    <div id="readinessModal" class="fixed inset-0 bg-navy-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative">
+            <button onclick="closeModal('readinessModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-12 h-12 rounded-2xl bg-navy-900 text-white flex items-center justify-center text-xl font-bold mb-4">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3 class="text-xl font-black text-navy-900 mb-2">Traditional Capital & Growth Pathways</h3>
+            <p class="text-xs text-slate-500 mb-6">Explore non-crowdfunding capital avenues for ventures looking beyond micro-grants.</p>
+
+            <div class="space-y-4 text-xs">
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                    <h4 class="font-bold text-navy-900">1. Non-Dilutive Grant Directory</h4>
+                    <p class="text-slate-500 mt-1">Access curated grant applications matching your industry and region.</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                    <h4 class="font-bold text-navy-900">2. Venture Capital & Angel Matching</h4>
+                    <p class="text-slate-500 mt-1">Get pitch-coaching and intro opportunities with early-stage impact investors.</p>
+                </div>
+            </div>
+            <button onclick="closeModal('readinessModal'); showToast('Readiness application requested!')" class="w-full mt-6 py-3 bg-magenta-500 text-white font-bold text-xs rounded-xl">Apply for Investor Prep</button>
+        </div>
+    </div>
+
+    <!-- MODAL: SIGN IN -->
+    <div id="signInModal" class="fixed inset-0 bg-navy-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative">
+            <button onclick="closeModal('signInModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-xl font-black text-navy-900 mb-1">User Sign In</h3>
+            <p class="text-xs text-slate-500 mb-6">Access your active learning modules and project backing portfolio.</p>
+
+            <form onsubmit="handleAuthLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Email</label>
+                    <input type="email" id="login-email" required placeholder="founder@startupglory.org" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
+                    <input type="password" id="login-password" required value="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs">
+                </div>
+                <button type="submit" id="signin-btn" class="w-full py-3 bg-navy-900 text-white font-bold rounded-xl shadow-lg hover:bg-slate-800 text-xs transition">
+                    Sign In
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- REGISTER MODAL -->
+    <div id="registerModal" class="fixed inset-0 bg-navy-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative">
+            <button onclick="closeModal('registerModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-xl font-black text-navy-900 mb-1">Join Startup Glory</h3>
+            <p class="text-xs text-slate-500 mb-6">Start your Learn → Mentor → Fund → Go To Market journey.</p>
+
+            <form onsubmit="handleAuthRegister(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
+                    <input type="text" id="register-name" required placeholder="Jane Doe" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Email</label>
+                    <input type="email" id="register-email" required placeholder="jane@example.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
+                    <input type="password" id="register-password" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs">
+                </div>
+                <button type="submit" id="register-btn" class="w-full py-3 bg-magenta-500 text-white font-bold rounded-xl shadow-lg hover:bg-magenta-600 text-xs transition">
+                    Create Free Account
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-navy-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 hidden items-center gap-3 z-50 text-xs font-semibold">
+        <i class="fa-solid fa-circle-check text-magenta-500 text-lg"></i>
+        <span id="toast-message">Action successful</span>
+    </div>
+
+    <!-- FIREBASE INITIALIZATION AND SPA LOGIC -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase Configuration & Initialization
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'startup-glory-app';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "AIzaSyDummyKeyForFallbackTesting",
+            authDomain: "startup-glory.firebaseapp.com",
+            projectId: "startup-glory",
+            storageBucket: "startup-glory.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef123456"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // App Memory State
+        window.dbState = {
+            currentUser: null,
+            totalFundedAllTime: 1245600,
+            activeCategory: 'all',
+            courses: [
+                { id: 'c1', title: 'Build a Viable Business Model', category: 'planning', time: '8 mins', img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80' },
+                { id: 'c2', title: 'Customer Acquisition Fundamentals', category: 'planning', time: '8 mins', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80' },
+                { id: 'c3', title: 'Cash Flow & Repayment Planning', category: 'finance', time: '8 mins', img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80' },
+                { id: 'c4', title: 'Crafting Your Funding Pitch', category: 'pitch', time: '8 mins', img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=500&q=80' }
+            ],
+            loans: [
+                {
+                    id: 'proj-1',
+                    name: 'Amina & SolarAgro Co.',
+                    categories: ['women', 'greentech'],
+                    region: 'Africa',
+                    location: 'Nairobi, Kenya • Africa',
+                    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
+                    desc: 'Completed 4 learning modules & mentor review. Seeking funding to purchase solar-powered drip irrigation kits.',
+                    raised: 1850,
+                    goal: 2500,
+                    lenders: 42,
+                    daysLeft: 14
+                },
+                {
+                    id: 'proj-2',
+                    name: "Tunde's E-Waste Labs",
+                    categories: ['greentech', 'kingdom'],
+                    region: 'Africa',
+                    location: 'Lagos, Nigeria • Africa',
+                    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+                    desc: 'Mentor-endorsed expansion for battery recycling capacity and hiring local electrical technicians.',
+                    raised: 3200,
+                    goal: 4000,
+                    lenders: 68,
+                    daysLeft: 8
+                },
+                {
+                    id: 'proj-3',
+                    name: 'Grace & CodeKids Hub',
+                    categories: ['women', 'education', 'kingdom'],
+                    region: 'Europe',
+                    location: 'Birmingham, UK • Europe',
+                    img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80',
+                    desc: 'Supplying 15 refurbished laptops for free weekend STEM workshops in underserved schools.',
+                    raised: 950,
+                    goal: 1500,
+                    lenders: 29,
+                    daysLeft: 21
+                }
+            ]
+        };
+
+        // Firebase Auth Listener Init
+        async function initAuth() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else if (!auth.currentUser) {
+                    await signInAnonymously(auth);
+                }
+            } catch (err) {
+                console.warn("Auth initialization fallback:", err);
+            }
+
+            onAuthStateChanged(auth, (user) => {
+                if (user && !user.isAnonymous) {
+                    window.dbState.currentUser = { uid: user.uid, email: user.email };
+                    updateAuthUI(user.email);
+                } else {
+                    window.dbState.currentUser = null;
+                    resetAuthUI();
+                }
+                subscribeProjects();
+            });
+        }
+
+        // Firestore Realtime Listener for Projects
+        function subscribeProjects() {
+            try {
+                const projectsCol = collection(db, 'artifacts', appId, 'public', 'data', 'projects');
+                onSnapshot(projectsCol, (snapshot) => {
+                    if (!snapshot.empty) {
+                        const fetched = [];
+                        snapshot.forEach((docSnap) => {
+                            fetched.push({ id: docSnap.id, ...docSnap.data() });
+                        });
+                        if (fetched.length > 0) window.dbState.loans = fetched;
+                    }
+                    window.renderLoans();
+                }, (error) => {
+                    console.error("Projects snapshot error:", error);
+                    window.renderLoans();
+                });
+            } catch (e) {
+                window.renderLoans();
+            }
+        }
+
+        // Global Window Functions for Auth Form Handlers
+        window.handleAuthLogin = async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const btn = document.getElementById('signin-btn');
+
+            try {
+                btn.innerText = "Signing in...";
+                await signInWithEmailAndPassword(auth, email, password);
+                window.closeModal('signInModal');
+                window.showToast(`Welcome back, ${email}!`);
+            } catch (err) {
+                btn.innerText = "Sign In";
+                window.showToast(`Sign in error: ${err.message}`);
+            }
+        };
+
+        window.handleAuthRegister = async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const btn = document.getElementById('register-btn');
+
+            try {
+                btn.innerText = "Creating Account...";
+                const res = await createUserWithEmailAndPassword(auth, email, password);
+                
+                // Save user profile in Firestore
+                const userDocRef = doc(db, 'artifacts', appId, 'users', res.user.uid, 'profile', 'data');
+                await setDoc(userDocRef, { name, email, createdAt: new Date().toISOString() });
+
+                window.closeModal('registerModal');
+                window.showToast("Account created successfully!");
+            } catch (err) {
+                btn.innerText = "Create Free Account";
+                window.showToast(`Registration error: ${err.message}`);
+            }
+        };
+
+        window.handleLogout = async function() {
+            await signOut(auth);
+            await signInAnonymously(auth);
+            window.showToast("Logged out successfully.");
+        };
+
+        function updateAuthUI(email) {
+            const container = document.getElementById('auth-buttons-container');
+            if (container) {
+                container.innerHTML = `
+                    <span class="text-xs font-bold text-navy-900 bg-slate-100 px-3 py-2 rounded-xl border border-slate-200 flex items-center gap-1.5">
+                        <i class="fa-solid fa-user-circle text-magenta-500"></i> ${email}
+                    </span>
+                    <button onclick="handleLogout()" class="text-xs font-bold text-red-500 hover:underline">Logout</button>
+                `;
+            }
+        }
+
+        function resetAuthUI() {
+            const container = document.getElementById('auth-buttons-container');
+            if (container) {
+                container.innerHTML = `
+                    <button onclick="openModal('signInModal')" class="px-5 py-2.5 text-xs font-extrabold text-navy-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all border border-slate-200">Sign In</button>
+                    <button onclick="openModal('registerModal')" class="px-5 py-2.5 text-xs font-extrabold text-white bg-magenta-500 hover:bg-magenta-600 rounded-xl shadow-md transition-all">Register Now</button>
+                `;
+            }
+        }
+
+        window.handleStripePayment = async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('pay-submit-btn');
+            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Processing...`;
+
+            setTimeout(async () => {
+                if (window.currentActiveLoan) {
+                    window.currentActiveLoan.raised += window.selectedLendAmount;
+                    window.currentActiveLoan.lenders += 1;
+                    window.dbState.totalFundedAllTime += window.selectedLendAmount;
+                    
+                    document.getElementById('stat-total-funded').innerText = `$${window.dbState.totalFundedAllTime.toLocaleString()}`;
+                    
+                    // Firestore update if user is authenticated
+                    try {
+                        const projDoc = doc(db, 'artifacts', appId, 'public', 'data', 'projects', window.currentActiveLoan.id);
+                        await setDoc(projDoc, window.currentActiveLoan, { merge: true });
+                    } catch (e) {
+                        console.log("Firestore update saved locally");
+                    }
+
+                    window.renderLoans();
+                }
+                btn.innerHTML = `<span>Support Project $<span id="btn-pay-amount">${window.selectedLendAmount}</span></span>`;
+                window.closeModal('lendModal');
+                window.showToast(`Thank you! Your $${window.selectedLendAmount} contribution was recorded.`);
+            }, 800);
+        };
+
+        // Initialize Firebase Auth Flow on window load
+        initAuth();
+    </script>
+
+    <!-- UI ROUTING & RENDERING SCRIPT -->
+    <script>
+        window.currentActiveLoan = null;
+        window.selectedLendAmount = 25;
+
+        window.applyLoanFilters = function() {
+            const selectedRegion = document.getElementById('region-filter-select').value;
+            const category = window.dbState.activeCategory;
+            window.renderLoans(category, selectedRegion);
+        };
+
+        window.setCategoryFilter = function(category) {
+            window.dbState.activeCategory = category;
+            document.querySelectorAll('.loan-cat-btn').forEach(btn => {
+                btn.className = "loan-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200";
+            });
+            const activeBtn = document.getElementById(`loan-filter-${category}`);
+            if (activeBtn) {
+                activeBtn.className = "loan-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-extrabold bg-magenta-500 text-white";
+            }
+            window.applyLoanFilters();
+        };
+
+        window.renderLoans = function(catFilter = 'all', regionFilter = 'all') {
+            const container = document.getElementById('loan-marketplace-grid');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const filtered = window.dbState.loans.filter(l => {
+                const matchCategory = (catFilter === 'all' || l.categories.includes(catFilter));
+                const matchRegion = (regionFilter === 'all' || l.region === regionFilter);
+                return matchCategory && matchRegion;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-3 text-center py-12 bg-white rounded-2xl border border-slate-200 p-8">
+                        <i class="fa-solid fa-folder-open text-4xl text-slate-300 mb-3"></i>
+                        <h4 class="text-base font-bold text-navy-900">No campaigns match your selected filters</h4>
+                        <p class="text-xs text-slate-500 mt-1">Try resetting regions or categories to view all opportunities.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(loan => {
+                const percent = Math.min(100, Math.round((loan.raised / loan.goal) * 100));
+                container.innerHTML += `
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="relative">
+                                <img src="${loan.img}" class="h-48 w-full object-cover">
+                                <span class="absolute top-3 right-3 bg-white/90 backdrop-blur text-navy-900 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase border border-slate-200 shadow-xs">
+                                    <i class="fa-solid fa-location-dot text-magenta-500 mr-1"></i> ${loan.location}
+                                </span>
+                            </div>
+                            <div class="p-6">
+                                <div class="inline-block px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-extrabold rounded mb-2">
+                                    <i class="fa-solid fa-check-circle mr-1"></i> Mentor Endorsed
+                                </div>
+                                <h3 class="font-black text-navy-900 text-base mb-1">${loan.name}</h3>
+                                <p class="text-xs text-slate-500 mb-4 leading-relaxed">${loan.desc}</p>
+
+                                <div class="space-y-1 mb-4">
+                                    <div class="flex justify-between text-xs font-bold">
+                                        <span class="text-magenta-500">$${loan.raised.toLocaleString()} Raised</span>
+                                        <span class="text-slate-400">$${loan.goal.toLocaleString()} Goal</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                        <div class="bg-magenta-500 h-full rounded-full transition-all duration-500" style="width: ${percent}%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-[11px] text-slate-500 pt-1 font-medium">
+                                        <span><i class="fa-solid fa-users text-slate-400"></i> ${loan.lenders} Supporters</span>
+                                        <span><i class="fa-regular fa-clock text-slate-400"></i> ${loan.daysLeft} Days Left</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-0">
+                            <button onclick="openLendModal('${loan.id}')" class="w-full py-3 bg-magenta-500 hover:bg-magenta-600 text-white font-extrabold text-xs rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                                Back Project ($25) <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        };
+
+        window.renderCourses = function(filter = 'all') {
+            const container = document.getElementById('courses-grid');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const filtered = window.dbState.courses.filter(c => filter === 'all' || c.category === filter);
+
+            filtered.forEach(course => {
+                container.innerHTML += `
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow flex flex-col justify-between">
+                        <img src="${course.img}" class="h-40 w-full object-cover">
+                        <div class="p-5">
+                            <span class="text-[10px] font-extrabold uppercase text-magenta-500">${course.time} Module</span>
+                            <h3 class="font-bold text-navy-900 text-sm mt-1 mb-4">${course.title}</h3>
+                            <button onclick="showToast('Module loaded!')" class="w-full py-2.5 bg-navy-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl">Start Module</button>
+                        </div>
+                    </div>
+                `;
+            });
+        };
+
+        window.navigateTo = function(pageId) {
+            document.querySelectorAll('.page-view').forEach(v => v.classList.add('hidden'));
+            const selected = document.getElementById(`page-${pageId}`);
+            if (selected) {
+                selected.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('nav-active'));
+            const activeBtn = document.getElementById(`nav-${pageId}`);
+            if (activeBtn) activeBtn.classList.add('nav-active');
+        };
+
+        window.toggleMobileMenu = function() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        };
+
+        window.openModal = function(id) {
+            document.getElementById(id).classList.remove('hidden');
+        };
+
+        window.closeModal = function(id) {
+            document.getElementById(id).classList.add('hidden');
+        };
+
+        window.showToast = function(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex', 'toast-slide');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        };
+
+        window.openLendModal = function(loanId) {
+            window.currentActiveLoan = window.dbState.loans.find(l => l.id === loanId);
+            if (window.currentActiveLoan) {
+                document.getElementById('lend-borrower-name').innerText = window.currentActiveLoan.name;
+                window.openModal('lendModal');
+            }
+        };
+
+        window.setLendAmount = function(amt) {
+            window.selectedLendAmount = amt;
+            document.getElementById('btn-pay-amount').innerText = amt;
+        };
+
+        window.switchKivaPillar = function(pillar) {
+            ['lend', 'borrow', 'partner'].forEach(v => {
+                const viewEl = document.getElementById(`kiva-view-${v}`);
+                const tabEl = document.getElementById(`kiva-tab-${v}`);
+                if (v === pillar) {
+                    viewEl.classList.remove('hidden');
+                    tabEl.className = "px-6 py-2.5 rounded-xl text-xs font-extrabold bg-magenta-500 text-white shadow-xs flex items-center gap-2 transition";
+                } else {
+                    viewEl.classList.add('hidden');
+                    tabEl.className = "px-6 py-2.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200 flex items-center gap-2 transition";
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.renderLoans();
+            window.renderCourses();
+            window.navigateTo('home');
+        });
+    </script>
+</body>
+</html>
