@@ -1,297 +1,1260 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Startup Glory — Christian Crowdfunding Incubator</title>
+    <title>Startup Glory - Entrepreneurs Learn. Grow. Impact Lives.</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
                     colors: {
-                        navy: {
-                            DEFAULT: '#0A192F',
-                            dark: '#070F1E',
-                            light: '#0F2A4A'
-                        },
                         magenta: {
-                            DEFAULT: '#E60067',
-                            hover: '#C70057',
-                            light: '#FFF0F5'
+                            50: '#fff1f4',
+                            100: '#ffe4e8',
+                            500: '#E60067',
+                            600: '#c40057',
+                            700: '#9e0046',
+                        },
+                        navy: {
+                            800: '#0f2a4a',
+                            900: '#0A192F',
+                            950: '#060f1e',
                         }
                     }
                 }
             }
         }
     </script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAFAFB;
+            color: #0A192F;
+        }
+        .nav-active {
+            color: #E60067 !important;
+            font-weight: 800;
+            border-bottom: 2px solid #E60067;
+        }
+        .toast-slide {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(10, 25, 47, 0.05), 0 2px 6px -1px rgba(10, 25, 47, 0.03);
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans antialiased min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col justify-between selection:bg-magenta-500 selection:text-white text-navy-900">
 
-    <!-- HEADER / NAVIGATION -->
-    <header class="bg-navy text-white sticky top-0 z-40 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('dashboard')">
-                <div class="w-10 h-10 rounded-lg bg-magenta flex items-center justify-center font-bold text-xl shadow">SG</div>
-                <div>
-                    <span class="text-xl font-extrabold tracking-wider text-white">STARTUP GLORY</span>
-                    <span class="block text-xs text-magenta font-semibold tracking-widest uppercase">Kingdom Incubator</span>
+    <!-- TOP NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 sm:h-24">
+                
+                <!-- STARTUP GLORY UNIFIED BRAND LOGO -->
+                <div class="flex items-center cursor-pointer py-1" onclick="navigateTo('home')">
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-3">
+                            <svg class="h-10 sm:h-12 w-auto shrink-0" viewBox="0 0 120 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M60 6V14M22 22L28 28M98 22L92 28M10 60H18M102 60H110" stroke="#0A192F" stroke-width="4.5" stroke-linecap="round"/>
+                                <path d="M35 60C35 46.1929 46.1929 35 60 35C73.8071 35 85 46.1929 85 60C85 69.5 79.5 77.5 71.5 81.5V90H48.5V81.5C40.5 77.5 35 69.5 35 60Z" stroke="#0A192F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="white"/>
+                                <path d="M46 48L52 54L60 43L68 54L74 48V58H46V48Z" fill="#0A192F"/>
+                                <circle cx="46" cy="47" r="2" fill="#0A192F"/>
+                                <circle cx="60" cy="42" r="2.5" fill="#0A192F"/>
+                                <circle cx="74" cy="47" r="2" fill="#0A192F"/>
+                                <circle cx="44" cy="62" r="2.5" fill="#F97316"/>
+                                <path d="M39.5 69.5C39.5 66.5 41.5 65 44 65C46.5 65 48.5 66.5 48.5 69.5H39.5Z" fill="#F97316"/>
+                                <circle cx="52" cy="60" r="2.5" fill="#84CC16"/>
+                                <path d="M47.5 68C47.5 64.5 49.5 63 52 63C54.5 63 56.5 64.5 56.5 68H47.5Z" fill="#84CC16"/>
+                                <circle cx="60" cy="58" r="3" fill="#0EA5E9"/>
+                                <path d="M54.5 67.5C54.5 63.5 57 61.5 60 61.5C63 61.5 65.5 63.5 65.5 67.5H54.5Z" fill="#0EA5E9"/>
+                                <circle cx="68" cy="60" r="2.5" fill="#1D4ED8"/>
+                                <path d="M63.5 68C63.5 64.5 65.5 63 68 63C70.5 63 72.5 64.5 72.5 68H63.5Z" fill="#1D4ED8"/>
+                                <circle cx="76" cy="62" r="2.5" fill="#A855F7"/>
+                                <path d="M71.5 69.5C71.5 66.5 73.5 65 76 65C78.5 65 80.5 66.5 80.5 69.5H71.5Z" fill="#A855F7"/>
+                                <path d="M41 72.5C50 74.5 70 74.5 79 72.5" stroke="#0A192F" stroke-width="2" stroke-linecap="round"/>
+                                <text x="46" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#0A192F">S</text>
+                                <text x="54" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#E60067">U</text>
+                                <text x="63" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#0A192F">G</text>
+                                <rect x="47" y="89" width="26" height="4" rx="2" fill="#0A192F"/>
+                                <rect x="49" y="95" width="22" height="4" rx="2" fill="#0A192F"/>
+                                <rect x="51" y="101" width="18" height="4" rx="2" fill="#E60067"/>
+                                <rect x="53" y="107" width="14" height="4" rx="2" fill="#0A192F"/>
+                            </svg>
+                            
+                            <div class="flex flex-col leading-none">
+                                <span class="font-black text-navy-900 text-lg sm:text-xl tracking-tight">START<span class="text-magenta-500">UP</span></span>
+                                <span class="font-black text-navy-900 text-lg sm:text-xl tracking-tight -mt-0.5">GLORY</span>
+                            </div>
+                        </div>
+                        <span class="text-[10px] sm:text-[11px] font-bold text-navy-900/80 tracking-tight mt-0.5">Entrepreneurs Learn. Grow. Impact Lives.</span>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center space-x-8">
-                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="text-sm font-medium transition hover:text-magenta text-magenta border-b-2 border-magenta pb-1">Dashboard</button>
-                <button onclick="switchTab('learning')" id="nav-learning" class="text-sm font-medium transition hover:text-magenta text-gray-300 pb-1">Learning Hub (40)</button>
-                <button onclick="switchTab('campaigns')" id="nav-campaigns" class="text-sm font-medium transition hover:text-magenta text-gray-300 pb-1">Crowdfunding</button>
-                <button onclick="switchTab('mentorship')" id="nav-mentorship" class="text-sm font-medium transition hover:text-magenta text-gray-300 pb-1">Mentorship</button>
-            </nav>
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-7 text-sm font-bold text-navy-900">
+                    <button onclick="navigateTo('home')" id="nav-home" class="py-2 hover:text-magenta-500 transition-colors">Home</button>
+                    <button onclick="navigateTo('learning')" id="nav-learning" class="py-2 hover:text-magenta-500 transition-colors">Learning</button>
+                    <button onclick="navigateTo('mentorship')" id="nav-mentorship" class="py-2 hover:text-magenta-500 transition-colors">Mentorship</button>
+                    <button onclick="navigateTo('funding')" id="nav-funding" class="py-2 hover:text-magenta-500 transition-colors">Crowdfunding</button>
+                </nav>
 
-            <!-- User Auth Profile -->
-            <div class="flex items-center space-x-4">
-                <button onclick="openAuthModal()" id="auth-btn" class="bg-magenta hover:bg-magenta-hover text-white px-4 py-2 rounded-lg text-sm font-semibold shadow transition flex items-center space-x-2">
-                    <i data-lucide="user" class="w-4 h-4"></i>
-                    <span id="auth-btn-text">Sign In / Register</span>
+                <!-- Auth Buttons -->
+                <div class="hidden md:flex items-center gap-3" id="auth-buttons-container">
+                    <button onclick="openModal('signInModal')" class="px-5 py-2.5 text-xs font-extrabold text-navy-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all border border-slate-200">
+                        Sign In
+                    </button>
+                    <button onclick="openModal('registerModal')" class="px-5 py-2.5 text-xs font-extrabold text-white bg-magenta-500 hover:bg-magenta-600 rounded-xl shadow-md shadow-magenta-500/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        Register Now
+                    </button>
+                </div>
+
+                <!-- Mobile Navigation Toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl text-navy-900 hover:bg-slate-100 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
                 </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 bg-white px-6 pt-3 pb-6 space-y-3">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="block w-full text-left py-2 font-bold text-navy-900 hover:text-magenta-500">Home</button>
+            <button onclick="navigateTo('learning'); toggleMobileMenu()" class="block w-full text-left py-2 font-bold text-navy-900 hover:text-magenta-500">Learning</button>
+            <button onclick="navigateTo('mentorship'); toggleMobileMenu()" class="block w-full text-left py-2 font-bold text-navy-900 hover:text-magenta-500">Mentorship</button>
+            <button onclick="navigateTo('funding'); toggleMobileMenu()" class="block w-full text-left py-2 font-bold text-navy-900 hover:text-magenta-500">Crowdfunding</button>
+            <div class="pt-4 flex flex-col gap-2">
+                <button onclick="openModal('signInModal'); toggleMobileMenu()" class="w-full py-2.5 font-bold text-navy-900 bg-slate-100 rounded-xl">Sign In</button>
+                <button onclick="openModal('registerModal'); toggleMobileMenu()" class="w-full py-2.5 font-bold text-white bg-magenta-500 rounded-xl shadow">Register Now</button>
             </div>
         </div>
     </header>
 
-    <!-- MAIN CONTENT CONTAINER -->
+    <!-- MAIN SPA VIEWS -->
     <main class="flex-grow">
 
-        <!-- DASHBOARD TAB -->
-        <section id="tab-dashboard" class="tab-content py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="bg-gradient-to-r from-navy to-navy-light text-white rounded-2xl p-8 md:p-12 shadow-xl mb-10 flex flex-col md:flex-row justify-between items-center">
-                <div class="max-w-2xl mb-6 md:mb-0">
-                    <span class="inline-block bg-magenta text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">Stage 1: Foundation</span>
-                    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Welcome to Your Kingdom Enterprise</h1>
-                    <p class="text-gray-300 text-base md:text-lg mb-6">Build your venture with biblical stewardship, ethical operations, and rewards-based crowdfunding without debt.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <button onclick="switchTab('learning')" class="bg-magenta hover:bg-magenta-hover text-white font-bold px-6 py-3 rounded-xl shadow transition flex items-center space-x-2">
-                            <i data-lucide="book-open" class="w-5 h-5"></i>
-                            <span>Resume Curriculum (40 Modules)</span>
-                        </button>
-                        <button onclick="switchTab('campaigns')" class="bg-white text-navy hover:bg-gray-100 font-bold px-6 py-3 rounded-xl shadow transition flex items-center space-x-2">
-                            <i data-lucide="rocket" class="w-5 h-5"></i>
-                            <span>Explore Campaigns</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="bg-navy-dark p-6 rounded-xl border border-gray-800 w-full md:w-80 shadow-inner">
-                    <h3 class="text-sm font-bold uppercase tracking-wider text-gray-400 mb-3">Your Progress</h3>
-                    <div class="flex justify-between text-sm mb-1">
-                        <span class="text-gray-300">Modules Completed</span>
-                        <span id="overall-progress-text" class="text-magenta font-bold">0 / 40</span>
-                    </div>
-                    <div class="w-full bg-gray-800 rounded-full h-3 mb-4 overflow-hidden">
-                        <div id="overall-progress-bar" class="bg-magenta h-full transition-all duration-500" style="width: 0%"></div>
-                    </div>
-                    <p class="text-xs text-gray-400">Complete all 4 Core Kingdom Tracks and Operational Modules to unlock Stage 3 Crowdfunding launch.</p>
-                </div>
-            </div>
+        <!-- ==================== PAGE 1: HOME PAGE ==================== -->
+        <section id="page-home" class="page-view">
+            <div class="bg-gradient-to-b from-white via-slate-50 to-slate-100 py-12 md:py-16 border-b border-slate-200/60">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- HERO CONTAINER (DARK NAVY BOARDER CARD WITH 4-STAGE PIPELINE) -->
+                    <div class="bg-navy-900 rounded-3xl p-8 sm:p-12 text-white border-2 border-indigo-900/40 shadow-2xl relative overflow-hidden mb-12">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                        
+                        <div class="relative z-10 max-w-3xl mx-auto text-center">
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-magenta-500/20 border border-magenta-400/40 text-magenta-300 text-xs font-bold uppercase tracking-wider mb-6">
+                                <span class="w-2 h-2 rounded-full bg-magenta-500 animate-pulse"></span> Incubating Christian Change Agents Globally
+                            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="bg-white p-6 rounded-xl shadow border border-gray-100 flex items-start space-x-4">
-                    <div class="p-3 bg-magenta-light text-magenta rounded-lg"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
-                    <div>
-                        <h4 class="font-bold text-lg text-navy">Non-Debt Ethos</h4>
-                        <p class="text-sm text-gray-600 mt-1">Grow your enterprise through community backing and kingdom equity rather than burdensome loans.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow border border-gray-100 flex items-start space-x-4">
-                    <div class="p-3 bg-magenta-light text-magenta rounded-lg"><i data-lucide="video" class="w-6 h-6"></i></div>
-                    <div>
-                        <h4 class="font-bold text-lg text-navy">Hybrid Video Curriculum</h4>
-                        <p class="text-sm text-gray-600 mt-1">3, 5, and 8-minute high-impact video lessons paired with actionable step-by-step study guides.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow border border-gray-100 flex items-start space-x-4">
-                    <div class="p-3 bg-magenta-light text-magenta rounded-lg"><i data-lucide="users" class="w-6 h-6"></i></div>
-                    <div>
-                        <h4 class="font-bold text-lg text-navy">Kingdom Mentorship</h4>
-                        <p class="text-sm text-gray-600 mt-1">Connect with seasoned founders and leaders who walk out faith in the marketplace every day.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+                            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
+                                Equipping Change Agents to <br/>
+                                <span class="text-magenta-500">Transform & Reform Society.</span>
+                            </h1>
 
-        <!-- LEARNING HUB TAB (40 MODULES) -->
-        <section id="tab-learning" class="tab-content hidden py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-6 border-b border-gray-200">
-                <div>
-                    <h1 class="text-3xl font-extrabold text-navy">Startup Glory Learning Hub</h1>
-                    <p class="text-gray-600 mt-1">4 Core Kingdom Tracks & 9 Digital & Operational Tracks (40 Unique Modules)</p>
-                </div>
-                <div class="mt-4 md:mt-0 flex items-center space-x-3">
-                    <input type="text" id="course-search" placeholder="Search 40 modules..." oninput="filterCourses()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-magenta">
-                </div>
-            </div>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+                                Startup Glory empowers faith-driven founders and creators through Kingdom business training, 1-on-1 mentorship, rewards-based crowdfunding, and Go To Market execution.
+                            </p>
 
-            <!-- Track Filter Buttons -->
-            <div id="track-filters" class="flex flex-wrap gap-2 mb-8">
-                <button onclick="filterTrack('all')" class="track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-navy text-white shadow">All Tracks (40)</button>
-                <button onclick="filterTrack('core')" class="track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Core Kingdom (4)</button>
-                <button onclick="filterTrack('starting')" class="track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Starting & Strategy</button>
-                <button onclick="filterTrack('branding')" class="track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Branding & Story</button>
-                <button onclick="filterTrack('website')" class="track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Website & eCommerce</button>
-                <button onclick="filterTrack('marketing')" class="track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Online Marketing</button>
-                <button onclick="filterTrack('money')" class="track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Managing Money</button>
-                <button onclick="filterTrack('operations')" class="track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Operations</button>
-                <button onclick="filterTrack('legal')" class="track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Legal Essentials</button>
-                <button onclick="filterTrack('ai')" class="track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">AI & Security</button>
-                <button onclick="filterTrack('leadership')" class="track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Leadership & Wellness</button>
-            </div>
-
-            <!-- Course Cards Grid Sitting on Magenta Background Panel -->
-            <div class="bg-magenta p-6 md:p-8 rounded-2xl shadow-xl">
-                <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Populated dynamically via JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- CROWDFUNDING TAB -->
-        <section id="tab-campaigns" class="tab-content hidden py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="flex justify-between items-center mb-8 pb-6 border-b border-gray-200">
-                <div>
-                    <h1 class="text-3xl font-extrabold text-navy">Kingdom Crowdfunding Marketplace</h1>
-                    <p class="text-gray-600 mt-1">Back verified Christian entrepreneurs through rewards and impact-driven pledges.</p>
-                </div>
-                <button onclick="openCampaignModal()" class="bg-magenta hover:bg-magenta-hover text-white font-bold px-5 py-2.5 rounded-xl shadow transition flex items-center space-x-2">
-                    <i data-lucide="plus-circle" class="w-5 h-5"></i>
-                    <span>Launch Campaign</span>
-                </button>
-            </div>
-            <div id="campaigns-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Sample Campaign Card -->
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col">
-                    <div class="h-48 bg-navy flex items-center justify-center text-white relative">
-                        <span class="absolute top-4 left-4 bg-magenta text-xs font-bold px-3 py-1 rounded-full uppercase">Clean Tech</span>
-                        <i data-lucide="droplet" class="w-16 h-16 text-magenta"></i>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-bold text-xl text-navy mb-2">Living Water Filtration Systems</h3>
-                            <p class="text-sm text-gray-600 mb-4">Providing sustainable, low-cost solar-powered water purification units to remote rural communities.</p>
-                            <div class="mb-4">
-                                <div class="flex justify-between text-sm font-semibold mb-1">
-                                    <span class="text-navy">$18,450 raised</span>
-                                    <span class="text-gray-500">74% of $25,000</span>
+                            <!-- 4-STAGE PIPELINE VISUALIZATION -->
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 bg-navy-950/80 p-4 rounded-2xl border border-indigo-800/40 mb-8">
+                                <div class="p-3 text-center rounded-xl bg-navy-900/60 border border-slate-700/50">
+                                    <div class="text-xs font-black text-magenta-400 uppercase">Stage 1</div>
+                                    <div class="text-sm font-bold text-white mt-0.5">LEARN</div>
                                 </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-magenta h-2.5 rounded-full" style="width: 74%"></div>
+                                <div class="p-3 text-center rounded-xl bg-navy-900/60 border border-slate-700/50">
+                                    <div class="text-xs font-black text-magenta-400 uppercase">Stage 2</div>
+                                    <div class="text-sm font-bold text-white mt-0.5">GET MENTORED</div>
+                                </div>
+                                <div class="p-3 text-center rounded-xl bg-navy-900/60 border border-slate-700/50">
+                                    <div class="text-xs font-black text-magenta-400 uppercase">Stage 3</div>
+                                    <div class="text-sm font-bold text-white mt-0.5">CROWDFUND</div>
+                                </div>
+                                <div class="p-3 text-center rounded-xl bg-magenta-500/20 border border-magenta-500/60">
+                                    <div class="text-xs font-black text-magenta-300 uppercase">Stage 4</div>
+                                    <div class="text-sm font-extrabold text-white mt-0.5">GO TO MARKET</div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap justify-center gap-4">
+                                <button onclick="navigateTo('learning')" class="px-7 py-3.5 bg-magenta-500 hover:bg-magenta-600 text-white font-extrabold text-xs rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+                                    Start Learning Path <i class="fa-solid fa-arrow-right ml-1"></i>
+                                </button>
+                                <button onclick="navigateTo('funding')" class="px-7 py-3.5 bg-white text-navy-900 hover:bg-slate-100 font-extrabold text-xs rounded-xl shadow-md transition-all">
+                                    Back Change Agent Campaigns
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FEATURED CHANGE AGENTS -->
+                    <div class="mb-12">
+                        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-2">
+                            <div>
+                                <h2 class="text-2xl font-black text-navy-900">Featured Christian Change Agents</h2>
+                                <p class="text-xs text-navy-900/70">Kingdom-minded ventures advancing ethical enterprise, youth equipping, and community restoration.</p>
+                            </div>
+                            <button onclick="navigateTo('funding')" class="text-xs font-extrabold text-magenta-500 hover:underline self-start sm:self-auto">View All Campaigns →</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" class="h-44 w-full object-cover">
+                                <div class="p-5">
+                                    <div class="flex flex-wrap gap-2 mb-2">
+                                        <span class="px-2 py-0.5 bg-magenta-50 text-magenta-600 text-[10px] font-extrabold rounded">Business & Ethical Enterprise</span>
+                                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-extrabold rounded">Mentor-Vetted</span>
+                                    </div>
+                                    <h3 class="font-black text-navy-900 text-sm">Amina & SolarAgro Co.</h3>
+                                    <p class="text-xs font-bold text-navy-900/70 mt-0.5">Nairobi, Kenya • East Africa</p>
+                                    <p class="text-xs text-navy-900/80 mt-2">🚀 GTM Phase: Solar Drip Kit Deployment for Smallholder Farmers</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" class="h-44 w-full object-cover">
+                                <div class="p-5">
+                                    <div class="flex flex-wrap gap-2 mb-2">
+                                        <span class="px-2 py-0.5 bg-indigo-50 text-indigo-700 text-[10px] font-extrabold rounded">Community & Healthcare</span>
+                                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-extrabold rounded">Mentor-Vetted</span>
+                                    </div>
+                                    <h3 class="font-black text-navy-900 text-sm">Tunde's CleanTech & E-Waste Labs</h3>
+                                    <p class="text-xs font-bold text-navy-900/70 mt-0.5">Lagos, Nigeria • West Africa</p>
+                                    <p class="text-xs text-navy-900/80 mt-2">🚀 GTM Phase: Youth Vocational Training & Safe Battery Recycling</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80" class="h-44 w-full object-cover">
+                                <div class="p-5">
+                                    <div class="flex flex-wrap gap-2 mb-2">
+                                        <span class="px-2 py-0.5 bg-sky-50 text-sky-700 text-[10px] font-extrabold rounded">Education & Youth Equipping</span>
+                                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-extrabold rounded">Mentor-Vetted</span>
+                                    </div>
+                                    <h3 class="font-black text-navy-900 text-sm">Grace & CodeKids Kingdom Hub</h3>
+                                    <p class="text-xs font-bold text-navy-900/70 mt-0.5">Birmingham, UK • Global Diaspora</p>
+                                    <p class="text-xs text-navy-900/80 mt-2">🚀 GTM Phase: Weekend Digital Literacy & Discipleship Workshops</p>
                                 </div>
                             </div>
                         </div>
-                        <button onclick="openPledgeModal('Living Water Filtration Systems')" class="w-full bg-navy hover:bg-navy-light text-white font-bold py-2.5 rounded-xl transition">Back This Project</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE 2: LEARNING HUB ==================== -->
+        <section id="page-learning" class="page-view hidden">
+            <div class="bg-gradient-to-b from-white to-slate-50 py-12 md:py-16 border-b border-slate-200/60">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!-- 4-Stage Learning Banner -->
+                    <div class="bg-navy-900 rounded-3xl p-8 sm:p-10 text-white shadow-xl mb-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-magenta-500/20 border border-magenta-400/40 text-magenta-300 text-xs font-bold uppercase tracking-wider mb-3">
+                            Stage 1: Biblical Stewardship & Venture Readiness
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-black mb-3">Equipping Change Agents for Societal Reformation</h2>
+                        <p class="text-slate-300 text-xs sm:text-sm max-w-2xl mb-6">
+                            Complete foundational modules in ethical unit economics, reward-tier campaign design, and Go To Market execution to qualify for 1-on-1 mentorship and rewards-based crowdfunding.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-[11px] font-extrabold">
+                            <span class="px-3 py-1.5 rounded-lg bg-magenta-500 text-white">1. Learn</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-navy-800 text-slate-300">→ 2. Get Mentored</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-navy-800 text-slate-300">→ 3. Launch Rewards Campaign</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-navy-800 text-slate-300">→ 4. Go To Market</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                        <h3 class="text-xl font-black text-navy-900">Curriculum Modules</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="renderCourses('all')" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold bg-navy-900 text-white">All Tracks</button>
+                            <button onclick="renderCourses('planning')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 border border-slate-200 hover:bg-slate-100">Business Model</button>
+                            <button onclick="renderCourses('finance')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 border border-slate-200 hover:bg-slate-100">Cash Flow & Milestones</button>
+                            <button onclick="renderCourses('gtm')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 border border-slate-200 hover:bg-slate-100">Go To Market (GTM)</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="courses-grid">
+                        <!-- Populated dynamically via JS -->
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MENTORSHIP TAB -->
-        <section id="tab-mentorship" class="tab-content hidden py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="mb-8 pb-6 border-b border-gray-200">
-                <h1 class="text-3xl font-extrabold text-navy">Kingdom Mentorship Network</h1>
-                <p class="text-gray-600 mt-1">Gain wisdom, accountability, and strategic guidance from experienced marketplace leaders.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow border border-gray-100 flex items-start space-x-4">
-                    <div class="w-16 h-16 rounded-full bg-navy text-white flex items-center justify-center font-bold text-xl shrink-0">JD</div>
-                    <div>
-                        <h3 class="font-bold text-lg text-navy">Jonathan Davies</h3>
-                        <p class="text-xs text-magenta font-semibold uppercase">Operations & Supply Chain Expert</p>
-                        <p class="text-sm text-gray-600 mt-2">20+ years scaling ethical manufacturing enterprises and building resilient operational frameworks.</p>
-                        <button class="mt-4 bg-navy hover:bg-navy-light text-white text-sm font-semibold px-4 py-2 rounded-lg transition">Request Mentorship</button>
+        <!-- ==================== PAGE 3: MENTORSHIP NETWORK ==================== -->
+        <section id="page-mentorship" class="page-view hidden">
+            <div class="bg-gradient-to-b from-white to-slate-50 py-12 md:py-16 border-b border-slate-200/60">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl mb-10">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-navy-900 text-xs font-bold uppercase tracking-wider mb-4">
+                            <i class="fa-solid fa-compass text-magenta-500"></i> Stage 2 & Stage 4 Support
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-black text-navy-900 mb-3">1-on-1 Kingdom Venture & GTM Mentorship</h2>
+                        <p class="text-navy-900/75 text-sm leading-relaxed">
+                            Experienced Christian founders, operators, and Go To Market advisors validate your campaign reward tiers before launch and guide customer acquisition once your funding goal is reached.
+                        </p>
                     </div>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow border border-gray-100 flex items-start space-x-4">
-                    <div class="w-16 h-16 rounded-full bg-navy text-white flex items-center justify-center font-bold text-xl shrink-0">SM</div>
-                    <div>
-                        <h3 class="font-bold text-lg text-navy">Sarah Miller</h3>
-                        <p class="text-xs text-magenta font-semibold uppercase">Kingdom Branding & Storytelling</p>
-                        <p class="text-sm text-gray-600 mt-2">Specializes in helping redemptive brands craft authentic messaging and high-converting marketing funnels.</p>
-                        <button class="mt-4 bg-navy hover:bg-navy-light text-white text-sm font-semibold px-4 py-2 rounded-lg transition">Request Mentorship</button>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-2xl border border-slate-200 p-6 card-shadow">
+                            <div class="w-12 h-12 rounded-2xl bg-magenta-50 text-magenta-500 flex items-center justify-center text-xl mb-4">
+                                <i class="fa-solid fa-clipboard-check"></i>
+                            </div>
+                            <h3 class="font-black text-navy-900 text-base mb-1">Campaign Readiness Review</h3>
+                            <p class="text-xs text-navy-900/70 mb-4 leading-relaxed">Validate your funding goal, backer reward tiers, and budget breakdown with a certified Startup Glory mentor.</p>
+                            <button onclick="showToast('Mentor readiness session requested!')" class="w-full py-2.5 bg-navy-900 hover:bg-navy-800 text-white font-bold text-xs rounded-xl transition">Request Readiness Review</button>
+                        </div>
+
+                        <div class="bg-white rounded-2xl border border-slate-200 p-6 card-shadow">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-4">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                            <h3 class="font-black text-navy-900 text-base mb-1">Go To Market (GTM) Execution</h3>
+                            <p class="text-xs text-navy-900/70 mb-4 leading-relaxed">Work with growth marketers and distribution specialists to turn crowdfunded pledges into real customer traction.</p>
+                            <button onclick="showToast('GTM Advisor match requested!')" class="w-full py-2.5 bg-magenta-500 hover:bg-magenta-600 text-white font-bold text-xs rounded-xl transition">Connect with GTM Advisor</button>
+                        </div>
+
+                        <div class="bg-white rounded-2xl border border-slate-200 p-6 card-shadow">
+                            <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl mb-4">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                            <h3 class="font-black text-navy-900 text-base mb-1">Volunteer as a Mentor</h3>
+                            <p class="text-xs text-navy-900/70 mb-4 leading-relaxed">Share your operational, sales, or product expertise to endorse emerging creators across the globe.</p>
+                            <button onclick="showToast('Mentor application received!')" class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-navy-900 font-extrabold text-xs rounded-xl border border-slate-200 transition">Apply to Mentor</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-    </main>
-
-    <!-- LESSON MODAL (Magenta Background Theme) -->
-    <div id="lesson-modal" class="fixed inset-0 z-50 bg-black/70 flex items-center justify-center hidden p-4">
-        <div class="bg-magenta w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <!-- Modal Header -->
-            <div class="bg-navy text-white px-6 py-4 flex justify-between items-center">
-                <div>
-                    <span id="modal-track-badge" class="text-xs font-bold uppercase tracking-wider text-magenta bg-magenta/10 px-2.5 py-1 rounded">Track</span>
-                    <h2 id="modal-title" class="text-xl font-bold mt-1">Lesson Title</h2>
-                </div>
-                <button onclick="closeLessonModal()" class="text-gray-400 hover:text-white p-2"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <!-- Modal Body (Magenta Inner Theme) -->
-            <div class="p-6 md:p-8 overflow-y-auto space-y-6 text-white">
-                <!-- Video Player Container or Study Guide Toggle -->
-                <div id="video-container" class="bg-navy-dark rounded-xl overflow-hidden aspect-video shadow-inner flex flex-col items-center justify-center border border-white/10 relative">
-                    <!-- Populated via JS: either YouTube iframe or Study Guide Card -->
-                </div>
-                <!-- Action Worksheet & Scripture Reflection -->
-                <div class="bg-navy/90 p-6 rounded-xl border border-white/10 shadow">
-                    <h3 class="font-bold text-lg text-white mb-2 flex items-center space-x-2">
-                        <i data-lucide="file-text" class="w-5 h-5 text-magenta"></i>
-                        <span>Action Worksheet & Reflection</span>
-                    </h3>
-                    <p id="modal-framework" class="text-sm text-gray-200 mb-4">Core kingdom framework and actionable steps for enterprise execution.</p>
-                    <div class="bg-black/20 p-4 rounded-lg border border-white/10 mb-4">
-                        <label class="block text-xs font-bold uppercase text-magenta mb-1">Founder Action Prompt</label>
-                        <textarea id="founder-notes" rows="3" class="w-full bg-white/10 text-white placeholder-gray-400 border border-white/20 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-magenta" placeholder="Write your enterprise strategy notes here..."></textarea>
+        <!-- ==================== PAGE 4: CROWDFUNDING HUB ==================== -->
+        <section id="page-funding" class="page-view hidden">
+            <!-- Bright White & Emerald Header -->
+            <div class="bg-gradient-to-b from-emerald-50/40 via-white to-slate-50 py-16 border-b border-slate-200/60">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-4">
+                            <i class="fa-solid fa-hand-holding-heart"></i> Stage 3: Rewards-Based Crowdfunding for Change Agents
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl font-black text-navy-900 tracking-tight mb-4 leading-tight">
+                            Back Christian Change Agents. <br/><span class="text-magenta-500">Pray, Pledge & Reform Society.</span>
+                        </h1>
+                        <p class="text-navy-900/75 text-base mb-8 leading-relaxed">
+                            Support vetted Christian entrepreneurs launching projects that transform communities across business, education, healthcare, media, and family restoration. Backers receive tangible rewards, early product access, or community impact updates—never debt or securities.
+                        </p>
+                        
+                        <div class="flex flex-wrap items-center gap-4">
+                            <button onclick="switchCrowdPillar('support')" class="px-7 py-3.5 bg-magenta-500 hover:bg-magenta-600 text-white font-extrabold text-xs rounded-xl shadow-lg transition flex items-center gap-2">
+                                <i class="fa-solid fa-gift"></i> Back a Campaign ($15+)
+                            </button>
+                            <button onclick="switchCrowdPillar('create')" class="px-7 py-3.5 bg-navy-900 hover:bg-slate-800 text-white font-extrabold text-xs rounded-xl shadow-md transition flex items-center gap-2">
+                                <i class="fa-solid fa-seedling"></i> Launch a Change Agent Campaign
+                            </button>
+                            <button onclick="openModal('readinessModal')" class="px-7 py-3.5 bg-white hover:bg-slate-50 text-navy-900 font-bold text-xs rounded-xl border border-slate-300 shadow-xs transition flex items-center gap-2">
+                                <i class="fa-solid fa-graduation-cap"></i> Reward-Tier Design Guide
+                            </button>
+                        </div>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <button onclick="saveFounderNotes()" class="bg-white/20 hover:bg-white/30 text-white text-sm font-semibold px-4 py-2 rounded-lg transition">Save Notes</button>
-                        <button id="complete-btn" onclick="toggleCompleteCurrentLesson()" class="bg-magenta hover:bg-magenta-hover text-white font-bold px-6 py-2.5 rounded-xl shadow transition flex items-center space-x-2">
-                            <i data-lucide="check-circle" class="w-5 h-5"></i>
-                            <span id="complete-btn-text">Mark as Complete</span>
+
+                    <!-- Impact Stats Bar -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-8 border-t border-slate-200">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 card-shadow">
+                            <div class="text-2xl sm:text-3xl font-black text-navy-900" id="stat-total-funded">$1,245,600</div>
+                            <p class="text-xs text-navy-900/65 font-bold">Total Community Pledges</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 card-shadow">
+                            <div class="text-2xl sm:text-3xl font-black text-emerald-600">96.4%</div>
+                            <p class="text-xs text-navy-900/65 font-bold">Reward Fulfillment Rate</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 card-shadow">
+                            <div class="text-2xl sm:text-3xl font-black text-navy-900" id="stat-total-prayers">14,320</div>
+                            <p class="text-xs text-navy-900/65 font-bold">Prayer Commitments Logged</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 card-shadow">
+                            <div class="text-2xl sm:text-3xl font-black text-magenta-500">100%</div>
+                            <p class="text-xs text-navy-900/65 font-bold">Direct to Project Creator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3-PILLAR NAVIGATION TAB -->
+            <div class="bg-white border-b border-slate-200 sticky top-24 z-30 shadow-xs">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-center sm:justify-start gap-4 py-3 overflow-x-auto">
+                        <button onclick="switchCrowdPillar('support')" id="crowd-tab-support" class="px-6 py-2.5 rounded-xl text-xs font-extrabold bg-magenta-500 text-white shadow-xs flex items-center gap-2 transition shrink-0">
+                            <i class="fa-solid fa-coins"></i> 1. Support Campaigns
+                        </button>
+                        <button onclick="switchCrowdPillar('create')" id="crowd-tab-create" class="px-6 py-2.5 rounded-xl text-xs font-bold bg-slate-100 text-navy-900 hover:bg-slate-200 border border-slate-200 flex items-center gap-2 transition shrink-0">
+                            <i class="fa-solid fa-user-gear"></i> 2. Apply for Campaign Listing
+                        </button>
+                        <button onclick="switchCrowdPillar('partner')" id="crowd-tab-partner" class="px-6 py-2.5 rounded-xl text-xs font-bold bg-slate-100 text-navy-900 hover:bg-slate-200 border border-slate-200 flex items-center gap-2 transition shrink-0">
+                            <i class="fa-solid fa-handshake-simple"></i> 3. Partner With Us
                         </button>
                     </div>
                 </div>
             </div>
+
+            <!-- TAB 1: SUPPORT VIEW (MARKETPLACE) -->
+            <div id="crowd-view-support" class="py-12 bg-slate-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col gap-4 mb-8">
+                        <div>
+                            <h2 class="text-2xl font-black text-navy-900">Active Change Agent Campaigns</h2>
+                            <p class="text-xs text-navy-900/70">Filter by Sphere of Societal Transformation or Region. Commit to pray or select a reward tier to back a project.</p>
+                        </div>
+
+                        <!-- REGION DROPDOWN & SPHERES OF TRANSFORMATION FILTERS -->
+                        <div class="flex flex-wrap items-center gap-2">
+                            <!-- Region Filter Dropdown -->
+                            <div class="relative">
+                                <select id="region-filter-select" onchange="applyCampaignFilters()" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 border border-slate-300 shadow-xs focus:outline-none focus:border-magenta-500 cursor-pointer">
+                                    <option value="all">🌍 All Regions</option>
+                                    <option value="East Africa">East Africa</option>
+                                    <option value="Southern Africa">Southern Africa</option>
+                                    <option value="West Africa">West Africa</option>
+                                    <option value="Global Diaspora">Global Diaspora</option>
+                                </select>
+                            </div>
+
+                            <!-- Spheres of Societal Transformation Filters -->
+                            <button onclick="setCategoryFilter('all')" id="campaign-filter-all" class="campaign-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-extrabold bg-magenta-500 text-white">All Spheres</button>
+                            <button onclick="setCategoryFilter('business')" id="campaign-filter-business" class="campaign-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 hover:bg-slate-100 border border-slate-200">Business & Ethical Enterprise</button>
+                            <button onclick="setCategoryFilter('education')" id="campaign-filter-education" class="campaign-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 hover:bg-slate-100 border border-slate-200">Education & Youth Equipping</button>
+                            <button onclick="setCategoryFilter('community')" id="campaign-filter-community" class="campaign-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 hover:bg-slate-100 border border-slate-200">Community & Healthcare</button>
+                            <button onclick="setCategoryFilter('media')" id="campaign-filter-media" class="campaign-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 hover:bg-slate-100 border border-slate-200">Media, Arts & Culture</button>
+                            <button onclick="setCategoryFilter('family')" id="campaign-filter-family" class="campaign-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 hover:bg-slate-100 border border-slate-200">Family & Social Restoration</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="campaign-marketplace-grid">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: APPLY FOR CAMPAIGN VIEW -->
+            <div id="crowd-view-create" class="py-12 bg-white hidden">
+                <div class="max-w-3xl mx-auto px-4 text-center">
+                    <h3 class="text-2xl font-black text-navy-900 mb-2">Launch Your Community Crowdfunding Campaign</h3>
+                    <p class="text-xs text-navy-900/70 mb-6">Complete Stage 1 Learning and Stage 2 Mentor Endorsement to list your funding goal and backer rewards on Startup Glory.</p>
+                    <button onclick="navigateTo('learning')" class="px-6 py-3 bg-magenta-500 text-white font-bold text-xs rounded-xl">Start Stage 1 Learning</button>
+                </div>
+            </div>
+
+            <!-- TAB 3: PARTNER VIEW -->
+            <div id="crowd-view-partner" class="py-12 bg-white hidden">
+                <div class="max-w-3xl mx-auto px-4 text-center">
+                    <h3 class="text-2xl font-black text-navy-900 mb-2">Partner with Startup Glory</h3>
+                    <p class="text-xs text-navy-900/70 mb-6">Join our network of educational providers, mentors, and philanthropic impact sponsors.</p>
+                    <button onclick="showToast('Partnership inquiry received!')" class="px-6 py-3 bg-navy-900 text-white font-bold text-xs rounded-xl">Become an Impact Partner</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER NAV WITH UNIFIED BRAND LOCKUP & COMPLIANCE DISCLAIMER -->
+    <footer class="bg-navy-900 border-t border-navy-800 text-slate-300 text-xs py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+                    <!-- Unified Logo Lockup -->
+                    <div class="flex items-center gap-3">
+                        <svg class="h-11 w-auto shrink-0" viewBox="0 0 120 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M60 6V14M22 22L28 28M98 22L92 28M10 60H18M102 60H110" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/>
+                            <path d="M35 60C35 46.1929 46.1929 35 60 35C73.8071 35 85 46.1929 85 60C85 69.5 79.5 77.5 71.5 81.5V90H48.5V81.5C40.5 77.5 35 69.5 35 60Z" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="#0A192F"/>
+                            <path d="M46 48L52 54L60 43L68 54L74 48V58H46V48Z" fill="#FFFFFF"/>
+                            <circle cx="44" cy="62" r="2.5" fill="#F97316"/>
+                            <path d="M39.5 69.5C39.5 66.5 41.5 65 44 65C46.5 65 48.5 66.5 48.5 69.5H39.5Z" fill="#F97316"/>
+                            <circle cx="52" cy="60" r="2.5" fill="#84CC16"/>
+                            <path d="M47.5 68C47.5 64.5 49.5 63 52 63C54.5 63 56.5 64.5 56.5 68H47.5Z" fill="#84CC16"/>
+                            <circle cx="60" cy="58" r="3" fill="#0EA5E9"/>
+                            <path d="M54.5 67.5C54.5 63.5 57 61.5 60 61.5C63 61.5 65.5 63.5 65.5 67.5H54.5Z" fill="#0EA5E9"/>
+                            <circle cx="68" cy="60" r="2.5" fill="#1D4ED8"/>
+                            <path d="M63.5 68C63.5 64.5 65.5 63 68 63C70.5 63 72.5 64.5 72.5 68H63.5Z" fill="#1D4ED8"/>
+                            <circle cx="76" cy="62" r="2.5" fill="#A855F7"/>
+                            <path d="M71.5 69.5C71.5 66.5 73.5 65 76 65C78.5 65 80.5 66.5 80.5 69.5H71.5Z" fill="#A855F7"/>
+                            <path d="M41 72.5C50 74.5 70 74.5 79 72.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                            <text x="46" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#FFFFFF">S</text>
+                            <text x="54" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#E60067">U</text>
+                            <text x="63" y="83" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#FFFFFF">G</text>
+                            <rect x="47" y="89" width="26" height="4" rx="2" fill="#FFFFFF"/>
+                            <rect x="49" y="95" width="22" height="4" rx="2" fill="#FFFFFF"/>
+                            <rect x="51" y="101" width="18" height="4" rx="2" fill="#E60067"/>
+                            <rect x="53" y="107" width="14" height="4" rx="2" fill="#FFFFFF"/>
+                        </svg>
+                        
+                        <div class="flex flex-col leading-none">
+                            <span class="font-black text-white text-xl tracking-tight">START<span class="text-magenta-500">UP</span></span>
+                            <span class="font-black text-white text-xl tracking-tight -mt-0.5">GLORY</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-300 tracking-tight mt-1.5">Entrepreneurs Learn. Grow. Impact Lives.</span>
+                </div>
+                
+                <p class="text-slate-300">&copy; 2026 Startup Glory Platform. All rights reserved.</p>
+    <!-- MODAL: BACK A CAMPAIGN (KICKSTARTER-STYLE REWARD TIERS) -->
+    <div id="supportModal" class="fixed inset-0 bg-navy-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-8">
+            <button onclick="closeModal('supportModal')" class="absolute top-5 right-5 text-slate-400 hover:text-navy-900 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-2xl bg-magenta-50 text-magenta-500 flex items-center justify-center text-lg font-bold shrink-0">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg sm:text-xl font-black text-navy-900 leading-tight">Back <span id="support-creator-name" class="text-magenta-500">Campaign</span></h3>
+                    <p class="text-[11px] font-bold text-navy-900/65" id="support-funding-model-tag">Milestone-Verified Rewards Campaign</p>
+                </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-navy-900/80 mb-5">
+                <span class="font-extrabold text-navy-900 block mb-0.5"><i class="fa-solid fa-shield-halved text-magenta-500 mr-1"></i> Rewards-Based Crowdfunding Notice:</span>
+                Contributions are non-repayable rewards-based pledges or philanthropic grants—never loans, debt, or securities.
+            </div>
+
+            <form onsubmit="handleStripePledge(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-black text-navy-900 mb-2">1. Choose a Backer Reward Tier</label>
+                    <div id="modal-reward-tiers-container" class="space-y-2.5 max-h-60 overflow-y-auto pr-1">
+                        <!-- Dynamically populated reward tiers -->
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-navy-900 mb-1">Or Enter Custom Pledge Amount ($ USD)</label>
+                    <div class="relative">
+                        <span class="absolute left-3.5 top-2.5 text-xs font-extrabold text-navy-900/60">$</span>
+                        <input type="number" id="custom-pledge-input" min="5" value="50" oninput="handleCustomPledgeInput(this.value)" class="w-full pl-8 pr-4 py-2 rounded-xl border border-slate-300 text-xs font-extrabold text-navy-900 focus:outline-none focus:border-magenta-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-navy-900 mb-1">Direct Payment Rail</label>
+                    <input type="text" required value="Stripe Connect Direct Creator Payout" readonly class="w-full px-4 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs text-navy-900/75 font-mono">
+                </div>
+
+                <div class="pt-1 flex flex-col sm:flex-row gap-2.5">
+                    <button type="button" onclick="commitPrayerFromModal()" class="py-3 px-4 bg-indigo-50 hover:bg-indigo-100 text-navy-900 font-extrabold text-xs rounded-xl border border-indigo-200 transition flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-hands-praying text-magenta-500"></i> Commit to Pray
+                    </button>
+                    <button type="submit" id="pay-submit-btn" class="flex-1 py-3 bg-magenta-500 hover:bg-magenta-600 text-white font-extrabold text-xs rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                        <span>Confirm Reward Pledge $<span id="btn-pay-amount">50</span></span>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-navy-dark text-gray-400 py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="flex items-center space-x-3 mb-4 md:mb-0">
-                <div class="w-8 h-8 rounded bg-magenta flex items-center justify-center font-bold text-white text-sm">SG</div>
-                <span class="text-lg font-bold text-white tracking-wider">STARTUP GLORY</span>
+    <!-- MODAL: CAMPAIGN READINESS PREP -->
+    <div id="readinessModal" class="fixed inset-0 bg-navy-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative">
+            <button onclick="closeModal('readinessModal')" class="absolute top-5 right-5 text-slate-400 hover:text-navy-900 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-12 h-12 rounded-2xl bg-navy-900 text-white flex items-center justify-center text-xl font-bold mb-4">
+                <i class="fa-solid fa-chart-line"></i>
             </div>
-            <p class="text-xs text-gray-500">© 2026 Startup Glory. Empowering Christian Entrepreneurs with Non-Debt Kingdom Capital & Curriculum.</p>
+            <h3 class="text-xl font-black text-navy-900 mb-2">Non-Dilutive Grant & Growth Pathways</h3>
+            <p class="text-xs text-navy-900/75 mb-6">Explore additional grant resources and milestone-based backing programs for scaling founders.</p>
+
+            <div class="space-y-4 text-xs">
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                    <h4 class="font-bold text-navy-900">1. Philanthropic & Impact Grant Directory</h4>
+                    <p class="text-navy-900/70 mt-1">Access curated non-repayable grant opportunities matching your sector and region.</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                    <h4 class="font-bold text-navy-900">2. Reward-Tier & Pre-Order Structuring</h4>
+                    <p class="text-navy-900/70 mt-1">Design compelling product rewards and milestone updates to rally community backers.</p>
+                </div>
+            </div>
+            <button onclick="closeModal('readinessModal'); showToast('Campaign readiness guide requested!')" class="w-full mt-6 py-3 bg-magenta-500 text-white font-bold text-xs rounded-xl">Request Campaign Prep Guide</button>
         </div>
-    </footer>
+    </div>
 
-    <!-- SCRIPT LOGIC -->
+    <!-- MODAL: SIGN IN -->
+    <div id="signInModal" class="fixed inset-0 bg-navy-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative">
+            <button onclick="closeModal('signInModal')" class="absolute top-5 right-5 text-slate-400 hover:text-navy-900 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-xl font-black text-navy-900 mb-1">Member Sign In</h3>
+            <p class="text-xs text-navy-900/70 mb-6">Access your learning modules, mentorship milestones, and backed campaigns.</p>
+
+            <form onsubmit="handleAuthLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-navy-900 mb-1">Email</label>
+                    <input type="email" id="login-email" required placeholder="founder@startupglory.org" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-navy-900">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-navy-900 mb-1">Password</label>
+                    <input type="password" id="login-password" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-navy-900">
+                </div>
+                <button type="submit" id="signin-btn" class="w-full py-3 bg-navy-900 text-white font-bold rounded-xl shadow-lg hover:bg-slate-800 text-xs transition">
+                    Sign In
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- REGISTER MODAL -->
+    <div id="registerModal" class="fixed inset-0 bg-navy-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative">
+            <button onclick="closeModal('registerModal')" class="absolute top-5 right-5 text-slate-400 hover:text-navy-900 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-xl font-black text-navy-900 mb-1">Join Startup Glory</h3>
+            <p class="text-xs text-navy-900/70 mb-6">Start your Learn → Mentor → Crowdfund → Go To Market journey.</p>
+
+            <form onsubmit="handleAuthRegister(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-navy-900 mb-1">Full Name</label>
+                    <input type="text" id="register-name" required placeholder="Grace Mensah" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-navy-900">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-navy-900 mb-1">Email</label>
+                    <input type="email" id="register-email" required placeholder="founder@startupglory.org" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-navy-900">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-navy-900 mb-1">Password</label>
+                    <input type="password" id="register-password" required minlength="6" placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-navy-900">
+                </div>
+                <button type="submit" id="register-btn" class="w-full py-3 bg-magenta-500 text-white font-bold rounded-xl shadow-lg hover:bg-magenta-600 text-xs transition">
+                    Create Free Account
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden items-center gap-3 bg-navy-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-indigo-800/60 text-xs font-bold">
+        <i class="fa-solid fa-circle-check text-magenta-400 text-base"></i>
+        <span id="toast-message">Notification</span>
+    </div>
+
+    <!-- LIVE FIREBASE SDK MODULE (CONNECTED TO startup-glory) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import {
+            getAuth,
+            signInWithEmailAndPassword,
+            createUserWithEmailAndPassword,
+            signInAnonymously,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import {
+            getFirestore,
+            collection,
+            doc,
+            setDoc,
+            addDoc,
+            onSnapshot,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Live Firebase Configuration for Startup Glory
+        const firebaseConfig = {
+            apiKey: "AIzaSyCMxm0vBVHd8tFgjV6kRVvh5_PGwprbLEw",
+            authDomain: "startup-glory.firebaseapp.com",
+            projectId: "startup-glory",
+            storageBucket: "startup-glory.firebasestorage.app",
+            messagingSenderId: "183591138699",
+            appId: "1:183591138699:web:04966cd8f638462ea76b8e"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // App Memory State (Christian Change Agents & Kickstarter-Style Rewards Crowdfunding)
+        window.dbState = {
+            currentUser: null,
+            totalPledgedAllTime: 1245600,
+            totalPrayersAllTime: 14320,
+            activeCategory: 'all',
+            prayedCampaignIds: new Set(),
+            courses: [
+                { id: 'c1', title: 'Kingdom Stewardship & Viable Business Models', category: 'planning', time: '8 mins', img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80' },
+                { id: 'c2', title: 'Customer Acquisition & GTM Playbook', category: 'gtm', time: '12 mins', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80' },
+                { id: 'c3', title: 'Cash Flow & Milestone Budgeting', category: 'finance', time: '10 mins', img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80' },
+                { id: 'c4', title: 'Designing Kickstarter-Style Backer Rewards', category: 'planning', time: '8 mins', img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=500&q=80' }
+            ],
+            campaigns: [
+                {
+                    id: 'camp-1',
+                    name: 'Amina & SolarAgro Co.',
+                    sphereLabel: 'Business & Ethical Enterprise',
+                    categories: ['business'],
+                    region: 'East Africa',
+                    location: 'Nairobi, Kenya • East Africa',
+                    fundingModel: 'Milestone-Verified Campaign',
+                    gtmBadge: '🚀 GTM Phase: Launching Retail Distribution in Nairobi',
+                    desc: 'Equipping rural Christian farming cooperatives with solar-powered drip irrigation kits to eliminate seasonal crop failure and create dignified jobs.',
+                    raised: 1850,
+                    goal: 2500,
+                    backers: 42,
+                    prayers: 138,
+                    daysLeft: 14,
+                    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
+                    rewardTiers: [
+                        { id: 't1', name: 'Seed Supporter', amount: 15, delivery: 'Est. Dec 2026', desc: 'Digital field impact report, prayer wall inclusion & behind-the-scenes farm updates.' },
+                        { id: 't2', name: 'Builder Tier', amount: 50, delivery: 'Est. Jan 2027', desc: 'Sponsor 1 solar drip valve kit for a local farmer + video thank-you & impact certificate.' },
+                        { id: 't3', name: 'Reformer Partner', amount: 150, delivery: 'Est. Feb 2027', desc: 'First-harvest specialty coffee/produce gift box + 1-on-1 virtual briefing with Amina.' }
+                    ]
+                },
+                {
+                    id: 'camp-2',
+                    name: "Tunde's CleanTech & E-Waste Labs",
+                    sphereLabel: 'Community & Healthcare',
+                    categories: ['community', 'business'],
+                    region: 'West Africa',
+                    location: 'Lagos, Nigeria • West Africa',
+                    fundingModel: 'All-or-Nothing Campaign',
+                    gtmBadge: '🚀 GTM Phase: B2B E-Waste Collection & Youth Apprenticeships',
+                    desc: 'Protecting community health by safely recycling toxic battery waste while training at-risk youth in renewable electrical engineering.',
+                    raised: 3200,
+                    goal: 4000,
+                    backers: 68,
+                    prayers: 215,
+                    daysLeft: 8,
+                    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+                    rewardTiers: [
+                        { id: 't1', name: 'Seed Supporter', amount: 15, delivery: 'Est. Dec 2026', desc: 'Quarterly community health impact report & supporter prayer newsletter.' },
+                        { id: 't2', name: 'Builder Tier', amount: 50, delivery: 'Est. Jan 2027', desc: 'Upcycled solar LED desk lamp crafted by our youth apprentices + impact certificate.' },
+                        { id: 't3', name: 'Reformer Partner', amount: 150, delivery: 'Est. Feb 2027', desc: 'Sponsor a full youth technician toolkit + naming recognition on our Lagos lab wall.' }
+                    ]
+                },
+                {
+                    id: 'camp-3',
+                    name: 'Grace & CodeKids Kingdom Hub',
+                    sphereLabel: 'Education & Youth Equipping',
+                    categories: ['education', 'family'],
+                    region: 'Global Diaspora',
+                    location: 'Birmingham, UK • Global Diaspora',
+                    fundingModel: 'All-or-Nothing Campaign',
+                    gtmBadge: '🚀 GTM Phase: Weekend STEM & Character Workshops',
+                    desc: 'Supplying 15 refurbished laptops and faith-anchored coding curricula for underserved youth in inner-city community centers.',
+                    raised: 950,
+                    goal: 1500,
+                    backers: 29,
+                    prayers: 94,
+                    daysLeft: 21,
+                    img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80',
+                    rewardTiers: [
+                        { id: 't1', name: 'Seed Supporter', amount: 15, delivery: 'Est. Dec 2026', desc: 'Digital copy of our Christian Youth Tech & Character Workbook + prayer updates.' },
+                        { id: 't2', name: 'Builder Tier', amount: 50, delivery: 'Est. Jan 2027', desc: 'Sponsor a student coding scholarship seat + personalized student project showcase video.' },
+                        { id: 't3', name: 'Reformer Partner', amount: 150, delivery: 'Est. Feb 2027', desc: 'VIP invite to Student Demo Day + dedicated laptop plaque in honor of your family/church.' }
+                    ]
+                },
+                {
+                    id: 'camp-4',
+                    name: 'Thabo & Ubuntu Redemptive Studios',
+                    sphereLabel: 'Media, Arts & Culture',
+                    categories: ['media', 'family'],
+                    region: 'Southern Africa',
+                    location: 'Cape Town, South Africa • Southern Africa',
+                    fundingModel: 'Milestone-Verified Campaign',
+                    gtmBadge: '🚀 GTM Phase: Family Animation Series Pilot Distribution',
+                    desc: 'Producing an animated African storytelling series that instills biblical values, integrity, and hope in children and families.',
+                    raised: 2100,
+                    goal: 3000,
+                    backers: 51,
+                    prayers: 176,
+                    daysLeft: 17,
+                    img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80',
+                    rewardTiers: [
+                        { id: 't1', name: 'Seed Supporter', amount: 15, delivery: 'Est. Dec 2026', desc: 'Early digital screener link of Episode 1 + printable family discussion guide.' },
+                        { id: 't2', name: 'Builder Tier', amount: 50, delivery: 'Est. Jan 2027', desc: 'Digital artbook, soundtrack download & family name in the episode credits.' },
+                        { id: 't3', name: 'Reformer Partner', amount: 150, delivery: 'Est. Feb 2027', desc: 'Associate Producer credit + live virtual Q&A with our animation directors.' }
+                    ]
+                }
+            ]
+        };
+
+        // Firebase Auth Listener Init
+        async function initAuth() {
+            try {
+                if (!auth.currentUser) {
+                    await signInAnonymously(auth);
+                }
+            } catch (err) {
+                console.warn("Anonymous session fallback (check if Anonymous Auth is enabled in Firebase):", err.message);
+            }
+
+            onAuthStateChanged(auth, (user) => {
+                if (user && !user.isAnonymous) {
+                    window.dbState.currentUser = { uid: user.uid, email: user.email };
+                    updateAuthUI(user.email);
+                } else {
+                    window.dbState.currentUser = null;
+                    resetAuthUI();
+                }
+                subscribeCampaigns();
+            });
+        }
+
+        // Firestore Realtime Listener for Live Campaigns Collection
+        function subscribeCampaigns() {
+            try {
+                const campaignsCol = collection(db, 'campaigns');
+                onSnapshot(campaignsCol, async (snapshot) => {
+                    if (snapshot.empty) {
+                        // Seed initial Change Agent campaigns into Firestore on first run
+                        for (const camp of window.dbState.campaigns) {
+                            await setDoc(doc(db, 'campaigns', camp.id), camp, { merge: true });
+                        }
+                    } else {
+                        const fetched = [];
+                        snapshot.forEach((docSnap) => {
+                            fetched.push({ id: docSnap.id, ...docSnap.data() });
+                        });
+                        if (fetched.length > 0) {
+                            window.dbState.campaigns = fetched;
+                        }
+                    }
+                    const regionVal = document.getElementById('region-filter-select')?.value || 'all';
+                    window.renderCampaigns(window.dbState.activeCategory, regionVal);
+                }, (error) => {
+                    console.warn("Firestore read fallback (ensure Firestore is in Test Mode):", error.message);
+                    window.renderCampaigns();
+                });
+            } catch (e) {
+                window.renderCampaigns();
+            }
+        }
+
+        // Global Window Functions for Auth Form Handlers
+        window.handleAuthLogin = async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const btn = document.getElementById('signin-btn');
+
+            try {
+                btn.innerText = "Signing in...";
+                await signInWithEmailAndPassword(auth, email, password);
+                btn.innerText = "Sign In";
+                window.closeModal('signInModal');
+                window.showToast(`Welcome back, ${email}!`);
+            } catch (err) {
+                btn.innerText = "Sign In";
+                window.showToast(`Sign in error: ${err.message}`);
+            }
+        };
+
+        window.handleAuthRegister = async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const btn = document.getElementById('register-btn');
+
+            try {
+                btn.innerText = "Creating Account...";
+                const res = await createUserWithEmailAndPassword(auth, email, password);
+                
+                // Save user profile in Firestore 'users' collection
+                await setDoc(doc(db, 'users', res.user.uid), {
+                    uid: res.user.uid,
+                    name,
+                    email,
+                    role: 'Change Agent / Backer',
+                    createdAt: serverTimestamp()
+                });
+
+                btn.innerText = "Create Free Account";
+                window.closeModal('registerModal');
+                window.showToast("Account created and saved to Startup Glory!");
+            } catch (err) {
+                btn.innerText = "Create Free Account";
+                window.showToast(`Registration error: ${err.message}`);
+            }
+        };
+
+        window.handleLogout = async function() {
+            await signOut(auth);
+            try {
+                await signInAnonymously(auth);
+            } catch (e) {}
+            window.showToast("Logged out successfully.");
+        };
+
+        function updateAuthUI(email) {
+            const container = document.getElementById('auth-buttons-container');
+            if (container) {
+                container.innerHTML = `
+                    <span class="text-xs font-bold text-navy-900 bg-slate-100 px-3 py-2 rounded-xl border border-slate-200 flex items-center gap-1.5">
+                        <i class="fa-solid fa-user-circle text-magenta-500"></i> ${email}
+                    </span>
+                    <button onclick="handleLogout()" class="text-xs font-bold text-magenta-600 hover:underline">Logout</button>
+                `;
+            }
+        }
+
+        function resetAuthUI() {
+            const container = document.getElementById('auth-buttons-container');
+            if (container) {
+                container.innerHTML = `
+                    <button onclick="openModal('signInModal')" class="px-5 py-2.5 text-xs font-extrabold text-navy-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all border border-slate-200">Sign In</button>
+                    <button onclick="openModal('registerModal')" class="px-5 py-2.5 text-xs font-extrabold text-white bg-magenta-500 hover:bg-magenta-600 rounded-xl shadow-md transition-all">Register Now</button>
+                `;
+            }
+        }
+
+        window.handleStripePledge = async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('pay-submit-btn');
+            const pledgeAmt = Math.max(5, Number(window.selectedPledgeAmount) || 50);
+            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Processing Reward Pledge...`;
+
+            setTimeout(async () => {
+                if (window.currentActiveCampaign) {
+                    window.currentActiveCampaign.raised += pledgeAmt;
+                    window.currentActiveCampaign.backers += 1;
+                    window.dbState.totalPledgedAllTime += pledgeAmt;
+                    
+                    document.getElementById('stat-total-funded').innerText = `$${window.dbState.totalPledgedAllTime.toLocaleString()}`;
+                    
+                    // Persist updated campaign totals & pledge receipt in Firestore
+                    try {
+                        const campDoc = doc(db, 'campaigns', window.currentActiveCampaign.id);
+                        await setDoc(campDoc, {
+                            raised: window.currentActiveCampaign.raised,
+                            backers: window.currentActiveCampaign.backers
+                        }, { merge: true });
+
+                        await addDoc(collection(db, 'pledges'), {
+                            campaignId: window.currentActiveCampaign.id,
+                            campaignName: window.currentActiveCampaign.name,
+                            rewardTier: window.selectedRewardName,
+                            amount: pledgeAmt,
+                            backerUid: auth.currentUser ? auth.currentUser.uid : 'guest',
+                            backerEmail: (auth.currentUser && auth.currentUser.email) ? auth.currentUser.email : 'Supporter',
+                            createdAt: serverTimestamp()
+                        });
+                    } catch (err) {
+                        console.warn("Firestore pledge write fallback:", err.message);
+                    }
+
+                    const regionVal = document.getElementById('region-filter-select')?.value || 'all';
+                    window.renderCampaigns(window.dbState.activeCategory, regionVal);
+                }
+                btn.innerHTML = `<span>Confirm Reward Pledge $<span id="btn-pay-amount">${pledgeAmt}</span></span>`;
+                window.closeModal('supportModal');
+                window.showToast(`Thank you! Your $${pledgeAmt} reward pledge (${window.selectedRewardName}) is saved.`);
+            }, 600);
+        };
+
+        window.commitToPray = async function(campaignId) {
+            const camp = window.dbState.campaigns.find(c => c.id === campaignId);
+            if (!camp) return;
+
+            if (window.dbState.prayedCampaignIds.has(campaignId)) {
+                window.showToast(`You have already committed to pray for ${camp.name}!`);
+                return;
+            }
+
+            window.dbState.prayedCampaignIds.add(campaignId);
+            camp.prayers = (camp.prayers || 0) + 1;
+            window.dbState.totalPrayersAllTime += 1;
+
+            const statPrayersEl = document.getElementById('stat-total-prayers');
+            if (statPrayersEl) {
+                statPrayersEl.innerText = window.dbState.totalPrayersAllTime.toLocaleString();
+            }
+
+            try {
+                const campDoc = doc(db, 'campaigns', camp.id);
+                await setDoc(campDoc, { prayers: camp.prayers }, { merge: true });
+            } catch (err) {
+                console.warn("Firestore prayer count fallback:", err.message);
+            }
+
+            const regionVal = document.getElementById('region-filter-select')?.value || 'all';
+            window.renderCampaigns(window.dbState.activeCategory, regionVal);
+            window.showToast(`🙏 Prayer commitment recorded for ${camp.name}!`);
+        };
+
+        // Initialize Firebase Auth Flow on window load
+        initAuth();
+    </script>
+
+    <!-- UI ROUTING & RENDERING SCRIPT -->
     <script>
-        // Full 40-Module Curriculum Dataset (4 Core + 9 Operational Tracks)
-        const courses = [
-            // Core Kingdom Tracks (4)
-            { id: 'c1', title: 'Biblical Stewardship & Kingdom Economics', track: 'core', type: 'Core Deep Dive', duration: '8 min', videoId: '', summary: 'Master the foundational principles of God as owner, manager accountability, and wealth generation for kingdom impact.' },
-            { id: 'c2', title: 'Spheres of Societal Reformation', track: 'core', type: 'Core Deep Dive', duration: '8 min', videoId: '', summary: 'Align your business model with cultural transformation across arts, business, education, family, and government.' },
-            { id: 'c3', title: 'Spiritual Resilience & Founder Integrity', track: 'core', type: 'Core Deep Dive', duration: '8 min', videoId: '', summary: 'Cultivate deep spiritual fortitude, character integrity, and resilience to weather the storms of entrepreneurship.' },
-            { id: 'c4', title: 'Crowdfunding Readiness & Reward Design', track: 'core', type: 'Core Deep Dive', duration: '8 min', videoId: '', summary: 'Design irresistible, non-debt rewards campaigns that invite backers to partner with your mission.' },
+        window.currentActiveCampaign = null;
+        window.selectedPledgeAmount = 50;
+        window.selectedRewardName = 'Builder Tier';
 
-            // Starting & Strategy (5)
-            { id: 's1', title: 'How to Start a Business: Entity & Mission Setup', track: 'starting', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Establish your legal entity and articulate a bulletproof redemptive mission statement.' },
-            { id: 's2', title: 'Find Your Fit: Satisfying the Market Need', track: 'starting', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Identify your true target audience and validate product-market resonance.' },
-            { id: 's3', title: 'Level Up Your Goal Setting & Strategic Vision', track: 'starting', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Implement actionable milestones and strategic frameworks for sustainable growth.' },
-            { id: 's4', title: 'Getting Your Pitch Right for Impact Backers', track: 'starting', type: 'Mini Course', duration: '3 min', videoId: '', summary: 'Craft a compelling 3-minute pitch that converts casual observers into passionate backers.' },
-            { id: 's5', title: 'Buying or Partnering with an Existing Enterprise', track: 'starting', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Evaluate opportunities to acquire or strategically partner with operating ventures.' },
+        window.applyCampaignFilters = function() {
+            const selectedRegion = document.getElementById('region-filter-select').value;
+            const category = window.dbState.activeCategory;
+            window.renderCampaigns(category, selectedRegion);
+        };
 
-            // Branding & Storytelling (4)
-            { id: 'b1', title: 'Defining Your Redemptive Brand Identity', track: 'branding', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Build visual and verbal brand guidelines that communicate excellence and trust.' },
-            { id: 'b2', title: 'Selling with Storytelling: Communicating Impact
+        window.setCategoryFilter = function(category) {
+            window.dbState.activeCategory = category;
+            document.querySelectorAll('.campaign-cat-btn').forEach(btn => {
+                btn.className = "campaign-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 hover:bg-slate-100 border border-slate-200";
+            });
+            const activeBtn = document.getElementById(`campaign-filter-${category}`);
+            if (activeBtn) {
+                activeBtn.className = "campaign-cat-btn px-3.5 py-1.5 rounded-lg text-xs font-extrabold bg-magenta-500 text-white";
+            }
+            window.applyCampaignFilters();
+        };
+
+        window.renderCampaigns = function(catFilter = 'all', regionFilter = 'all') {
+            const container = document.getElementById('campaign-marketplace-grid');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const filtered = window.dbState.campaigns.filter(c => {
+                const matchCategory = (catFilter === 'all' || c.categories.includes(catFilter));
+                const matchRegion = (regionFilter === 'all' || c.region === regionFilter);
+                return matchCategory && matchRegion;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-3 text-center py-12 bg-white rounded-2xl border border-slate-200 p-8">
+                        <i class="fa-solid fa-folder-open text-4xl text-slate-300 mb-3"></i>
+                        <h4 class="text-base font-bold text-navy-900">No Change Agent campaigns match your filters</h4>
+                        <p class="text-xs text-navy-900/70 mt-1">Try resetting regions or Spheres of Transformation to view all active projects.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(camp => {
+                const percent = Math.min(100, Math.round((camp.raised / camp.goal) * 100));
+                const hasPrayed = window.dbState.prayedCampaignIds.has(camp.id);
+                const topReward = (camp.rewardTiers && camp.rewardTiers[1]) ? camp.rewardTiers[1] : { name: 'Builder Tier', amount: 50, desc: 'Backer Rewards & Milestone Updates' };
+
+                container.innerHTML += `
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="relative">
+                                <img src="${camp.img}" class="h-48 w-full object-cover">
+                                <span class="absolute top-3 left-3 bg-navy-900/90 backdrop-blur text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow-xs">
+                                    <i class="fa-regular fa-clock text-magenta-400 mr-1"></i> ${camp.daysLeft} Days Left
+                                </span>
+                                <span class="absolute top-3 right-3 bg-white/95 backdrop-blur text-navy-900 text-[10px] font-bold px-2.5 py-1 rounded-full border border-slate-200 shadow-xs">
+                                    <i class="fa-solid fa-location-dot text-magenta-500 mr-1"></i> ${camp.location}
+                                </span>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex flex-wrap gap-1.5 mb-2">
+                                    <span class="inline-block px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-extrabold rounded">
+                                        <i class="fa-solid fa-check-circle mr-1"></i> Mentor-Vetted
+                                    </span>
+                                    <span class="inline-block px-2 py-0.5 bg-indigo-50 text-navy-900 text-[10px] font-extrabold rounded">
+                                        ${camp.fundingModel || 'All-or-Nothing Campaign'}
+                                    </span>
+                                </div>
+                                <div class="text-[11px] font-extrabold text-magenta-600 mb-0.5">${camp.sphereLabel || 'Societal Transformation'}</div>
+                                <h3 class="font-black text-navy-900 text-base mb-1">${camp.name}</h3>
+                                <p class="text-xs text-navy-900/75 mb-3 leading-relaxed">${camp.desc}</p>
+                                
+                                <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200/80 mb-4">
+                                    <div class="text-[10px] font-black uppercase text-navy-900/60">Featured Backer Reward ($${topReward.amount}+)</div>
+                                    <div class="text-[11px] font-bold text-navy-900 mt-0.5">${topReward.name}: <span class="font-normal text-navy-900/80">${topReward.desc}</span></div>
+                                </div>
+
+                                <div class="space-y-1.5 mb-4">
+                                    <div class="flex justify-between text-xs font-bold">
+                                        <span class="text-magenta-500">$${camp.raised.toLocaleString()} Pledged (${percent}%)</span>
+                                        <span class="text-navy-900/60">Goal: $${camp.goal.toLocaleString()}</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                        <div class="bg-magenta-500 h-full rounded-full transition-all duration-500" style="width: ${percent}%"></div>
+                                    </div>
+                                    <div class="flex justify-between items-center text-[11px] text-navy-900/75 pt-1 font-semibold">
+                                        <span><i class="fa-solid fa-users text-slate-400 mr-1"></i> ${camp.backers} Backers</span>
+                                        <span class="text-indigo-900 font-bold"><i class="fa-solid fa-hands-praying text-magenta-500 mr-1"></i> ${camp.prayers || 0} Praying</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-0 flex gap-2">
+                            <button onclick="commitToPray('${camp.id}')" class="px-3.5 py-3 ${hasPrayed ? 'bg-indigo-100 text-navy-900 border-indigo-300' : 'bg-slate-100 hover:bg-indigo-50 text-navy-900 border-slate-200'} font-extrabold text-xs rounded-xl border transition flex items-center justify-center gap-1.5 shrink-0" title="Commit to Pray">
+                                <i class="fa-solid fa-hands-praying text-magenta-500"></i> ${hasPrayed ? 'Praying' : 'Pray'}
+                            </button>
+                            <button onclick="openSupportModal('${camp.id}')" class="flex-1 py-3 bg-magenta-500 hover:bg-magenta-600 text-white font-extrabold text-xs rounded-xl shadow-md transition flex items-center justify-center gap-1.5">
+                                Select Reward & Back <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        };
+
+        window.renderCourses = function(filter = 'all') {
+            const container = document.getElementById('courses-grid');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const filtered = window.dbState.courses.filter(c => filter === 'all' || c.category === filter);
+
+            filtered.forEach(course => {
+                container.innerHTML += `
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow flex flex-col justify-between">
+                        <img src="${course.img}" class="h-40 w-full object-cover">
+                        <div class="p-5">
+                            <span class="text-[10px] font-extrabold uppercase text-magenta-500">${course.time} Module</span>
+                            <h3 class="font-bold text-navy-900 text-sm mt-1 mb-4">${course.title}</h3>
+                            <button onclick="showToast('Module loaded!')" class="w-full py-2.5 bg-navy-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl">Start Module</button>
+                        </div>
+                    </div>
+                `;
+            });
+        };
+
+        window.navigateTo = function(pageId) {
+            document.querySelectorAll('.page-view').forEach(v => v.classList.add('hidden'));
+            const selected = document.getElementById(`page-${pageId}`);
+            if (selected) {
+                selected.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('nav-active'));
+            const activeBtn = document.getElementById(`nav-${pageId}`);
+            if (activeBtn) activeBtn.classList.add('nav-active');
+        };
+
+        window.toggleMobileMenu = function() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        };
+
+        window.openModal = function(id) {
+            document.getElementById(id).classList.remove('hidden');
+        };
+
+        window.closeModal = function(id) {
+            document.getElementById(id).classList.add('hidden');
+        };
+
+        window.showToast = function(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex', 'toast-slide');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        };
+
+        window.openSupportModal = function(campaignId) {
+            window.currentActiveCampaign = window.dbState.campaigns.find(c => c.id === campaignId);
+            if (window.currentActiveCampaign) {
+                document.getElementById('support-creator-name').innerText = window.currentActiveCampaign.name;
+                document.getElementById('support-funding-model-tag').innerText = `${window.currentActiveCampaign.fundingModel || 'Rewards-Based Campaign'} • ${window.currentActiveCampaign.daysLeft} Days Left`;
+                
+                const tiersContainer = document.getElementById('modal-reward-tiers-container');
+                const tiers = window.currentActiveCampaign.rewardTiers || [];
+                tiersContainer.innerHTML = '';
+
+                tiers.forEach((tier, idx) => {
+                    const isDefault = idx === 1 || (tiers.length === 1 && idx === 0);
+                    if (isDefault) {
+                        window.selectedPledgeAmount = tier.amount;
+                        window.selectedRewardName = tier.name;
+                        document.getElementById('custom-pledge-input').value = tier.amount;
+                        document.getElementById('btn-pay-amount').innerText = tier.amount;
+                    }
+                    tiersContainer.innerHTML += `
+                        <div onclick="selectRewardTier(${tier.amount}, '${tier.name.replace(/'/g, "\\'")}', this)" class="reward-tier-card cursor-pointer p-3.5 rounded-xl border-2 ${isDefault ? 'border-magenta-500 bg-magenta-50/40' : 'border-slate-200 hover:border-slate-300 bg-white'} transition">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-xs font-black text-navy-900">${tier.name}</span>
+                                <span class="px-2.5 py-0.5 rounded-lg bg-navy-900 text-white text-[11px] font-extrabold">$${tier.amount} Pledge</span>
+                            </div>
+                            <p class="text-[11px] text-navy-900/80 leading-snug">${tier.desc}</p>
+                            <div class="text-[10px] font-bold text-emerald-700 mt-1.5"><i class="fa-solid fa-truck-fast mr-1"></i> ${tier.delivery}</div>
+                        </div>
+                    `;
+                });
+
+                window.openModal('supportModal');
+            }
+        };
+
+        window.selectRewardTier = function(amt, rewardName, cardEl) {
+            window.selectedPledgeAmount = amt;
+            window.selectedRewardName = rewardName;
+            document.getElementById('custom-pledge-input').value = amt;
+            document.getElementById('btn-pay-amount').innerText = amt;
+
+            document.querySelectorAll('.reward-tier-card').forEach(el => {
+                el.className = "reward-tier-card cursor-pointer p-3.5 rounded-xl border-2 border-slate-200 hover:border-slate-300 bg-white transition";
+            });
+            if (cardEl) {
+                cardEl.className = "reward-tier-card cursor-pointer p-3.5 rounded-xl border-2 border-magenta-500 bg-magenta-50/40 transition";
+            }
+        };
+
+        window.handleCustomPledgeInput = function(val) {
+            const parsed = Math.max(5, Number(val) || 5);
+            window.selectedPledgeAmount = parsed;
+            window.selectedRewardName = 'Custom Supporter Pledge';
+            document.getElementById('btn-pay-amount').innerText = parsed;
+            document.querySelectorAll('.reward-tier-card').forEach(el => {
+                el.className = "reward-tier-card cursor-pointer p-3.5 rounded-xl border-2 border-slate-200 hover:border-slate-300 bg-white transition";
+            });
+        };
+
+        window.commitPrayerFromModal = function() {
+            if (window.currentActiveCampaign) {
+                window.commitToPray(window.currentActiveCampaign.id);
+            }
+        };
+
+        window.setPledgeAmount = function(amt, btnEl) {
+            window.selectedPledgeAmount = amt;
+            document.getElementById('btn-pay-amount').innerText = amt;
+            document.querySelectorAll('.pledge-amt-btn').forEach(btn => {
+                btn.className = "pledge-amt-btn py-2 border border-slate-200 text-navy-900 font-bold text-xs rounded-xl hover:bg-slate-50";
+            });
+            if (btnEl) {
+                btnEl.className = "pledge-amt-btn py-2 border-2 border-magenta-500 bg-magenta-50 text-magenta-600 font-extrabold text-xs rounded-xl";
+            }
+        };
+
+        window.switchCrowdPillar = function(pillar) {
+            ['support', 'create', 'partner'].forEach(v => {
+                const viewEl = document.getElementById(`crowd-view-${v}`);
+                const tabEl = document.getElementById(`crowd-tab-${v}`);
+                if (v === pillar) {
+                    viewEl.classList.remove('hidden');
+                    tabEl.className = "px-6 py-2.5 rounded-xl text-xs font-extrabold bg-magenta-500 text-white shadow-xs flex items-center gap-2 transition shrink-0";
+                } else {
+                    viewEl.classList.add('hidden');
+                    tabEl.className = "px-6 py-2.5 rounded-xl text-xs font-bold bg-slate-100 text-navy-900 hover:bg-slate-200 border border-slate-200 flex items-center gap-2 transition shrink-0";
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.renderCampaigns();
+            window.renderCourses();
+            window.navigateTo('home');
+        });
+    </script>
+</body>
+</html>
+                
