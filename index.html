@@ -74,7 +74,7 @@
                     <div class="flex flex-wrap gap-4">
                         <button onclick="switchTab('learning')" class="bg-magenta hover:bg-magenta-hover text-white font-bold px-6 py-3 rounded-xl shadow transition flex items-center space-x-2">
                             <i data-lucide="book-open" class="w-5 h-5"></i>
-                            <span>Resume Curriculum</span>
+                            <span>Resume Curriculum (40 Modules)</span>
                         </button>
                         <button onclick="switchTab('campaigns')" class="bg-white text-navy hover:bg-gray-100 font-bold px-6 py-3 rounded-xl shadow transition flex items-center space-x-2">
                             <i data-lucide="rocket" class="w-5 h-5"></i>
@@ -120,7 +120,7 @@
             </div>
         </section>
 
-        <!-- LEARNING HUB TAB -->
+        <!-- LEARNING HUB TAB (40 MODULES) -->
         <section id="tab-learning" class="tab-content hidden py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-6 border-b border-gray-200">
                 <div>
@@ -128,7 +128,7 @@
                     <p class="text-gray-600 mt-1">4 Core Kingdom Tracks & 9 Digital & Operational Tracks (40 Unique Modules)</p>
                 </div>
                 <div class="mt-4 md:mt-0 flex items-center space-x-3">
-                    <input type="text" id="course-search" placeholder="Search modules..." oninput="filterCourses()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-magenta">
+                    <input type="text" id="course-search" placeholder="Search 40 modules..." oninput="filterCourses()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-magenta">
                 </div>
             </div>
 
@@ -294,208 +294,4 @@
 
             // Branding & Storytelling (4)
             { id: 'b1', title: 'Defining Your Redemptive Brand Identity', track: 'branding', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Build visual and verbal brand guidelines that communicate excellence and trust.' },
-            { id: 'b2', title: 'Selling with Storytelling: Communicating Impact', track: 'branding', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Use narrative arcs to connect deeply with customer values and mission alignment.' },
-            { id: 'b3', title: 'Driving Demand for Your Product or Mission', track: 'branding', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Generate organic anticipation and waitlists prior to your official launch.' },
-            { id: 'b4', title: 'Captivate Your Audience with Clear Messaging', track: 'branding', type: 'Mini Course', duration: '3 min', videoId: '', summary: 'Eliminate confusion with the StoryBrand framework adapted for kingdom ventures.' },
-
-            // Website & eCommerce (4)
-            { id: 'w1', title: 'Put Your Website to Work: High-Converting Pages', track: 'website', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Structure landing pages that guide visitors effortlessly toward backing or purchasing.' },
-            { id: 'w2', title: 'Optimizing eCommerce & Backer Reward Fulfillment', track: 'website', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Set up seamless checkout, reward tiers, and automated fulfillment pipelines.' },
-            { id: 'w3', title: 'Customer Journey Mapping: From Visitor to Backer', track: 'website', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Map every touchpoint of your customer lifecycle for maximum retention.' },
-            { id: 'w4', title: 'A/B Testing: Optimizing Conversions & Pages', track: 'website', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Test headlines, imagery, and call-to-action buttons to maximize conversion rates.' },
-
-            // Online Marketing (5)
-            { id: 'm1', title: 'Intro to Online Growth & Digital Reach', track: 'marketing', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Establish your baseline digital footprint across search, social, and email channels.' },
-            { id: 'm2', title: 'The Basics of Search Engine Optimization (SEO)', track: 'marketing', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Rank consistently on search engines for high-intent keywords in your niche.' },
-            { id: 'm3', title: 'Social Media Marketing & Content Calendars', track: 'marketing', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Build repeatable posting rhythms across platforms without burning out.' },
-            { id: 'm4', title: 'Email Marketing: Building a Loyal Supporter List', track: 'marketing', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Own your audience list with high-value newsletters and automated sequences.' },
-            { id: 'm5', title: 'Effective Funnels & Ethical Paid Advertising', track: 'marketing', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Scale customer acquisition profitably using meta and search ads.' },
-
-            // Managing Money (5)
-            { id: 'mo1', title: 'Money Mindset: Stewardship Over Scarcity', track: 'money', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Overcome fear and scarcity mindsets to steward enterprise finances with boldness.' },
-            { id: 'mo2', title: 'Get Beyond Break-Even & Setting Smart Prices', track: 'money', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Calculate accurate cost structures and profit margins that ensure viability.' },
-            { id: 'mo3', title: 'Track Your Finances & Digital Financial Tools', track: 'money', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Implement clean bookkeeping and dashboard tracking for cash flow health.' },
-            { id: 'mo4', title: 'Paying Yourself & Calculating Sustainable Salaries', track: 'money', type: 'Mini Course', duration: '3 min', videoId: '', summary: 'Determine equitable, sustainable founder compensation without draining cash reserves.' },
-            { id: 'mo5', title: 'Finding Ethical Capital & Crowdfunding Readiness', track: 'money', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Prepare your financials for rewards-based crowdfunding success.' },
-
-            // Operations (4)
-            { id: 'op1', title: 'Operating Efficiency & Workflow Systems', track: 'operations', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Eliminate bottlenecks and automate repetitive administrative workflows.' },
-            { id: 'op2', title: 'Building Remote & Distributed Teams Effectively', track: 'operations', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Hire, onboard, and manage high-trust remote team members across time zones.' },
-            { id: 'op3', title: 'Supplier Readiness & Ethical Sourcing Standards', track: 'operations', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Ensure your supply chain reflects uncompromising integrity and quality.' },
-            { id: 'op4', title: 'When to Upgrade Your Tools & Equipment', track: 'operations', type: 'Mini Course', duration: '3 min', videoId: '', summary: 'Make smart capital expenditure decisions without taking on unnecessary debt.' },
-
-            // Legal Essentials (4)
-            { id: 'l1', title: 'Getting It in Writing: Contracts & Agreements', track: 'legal', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Protect your enterprise with robust client, vendor, and partner agreements.' },
-            { id: 'l2', title: 'Protecting Intellectual Property & Trademarks', track: 'legal', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Secure your brand assets, patents, and copyright ownership globally.' },
-            { id: 'l3', title: 'Planning for the Unexpected: Crisis Resilience', track: 'legal', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Build operational continuity plans to withstand unexpected market shocks.' },
-            { id: 'l4', title: 'Know Your Hazards & Compliance Basics', track: 'legal', type: 'Mini Course', duration: '3 min', videoId: '', summary: 'Navigate local regulatory compliance and licensing requirements effortlessly.' },
-
-            // AI & Security (4)
-            { id: 'ai1', title: 'Getting Started with AI for Business Productivity', track: 'ai', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Leverage generative AI to multiply your daily output in content and operations.' },
-            { id: 'ai2', title: 'How to Train Your AI to Match Your Brand Voice', track: 'ai', type: 'Mini Course', duration: '3 min', videoId: '', summary: 'Customize AI prompts and custom instructions to sound authentically like you.' },
-            { id: 'ai3', title: 'AI & Intellectual Property Guardrails', track: 'ai', type: 'Mini Course', duration: '3 min', videoId: '', summary: 'Understand copyright nuances and data privacy best practices when using AI tools.' },
-            { id: 'ai4', title: 'Digital Defense: Intro to Cyber Security', track: 'ai', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Secure customer data, passwords, and cloud infrastructure against breaches.' },
-
-            // Leadership & Wellness (4)
-            { id: 'le1', title: 'Recruiting & Onboarding for Character & Competence', track: 'leadership', type: 'Standard Course', duration: '5 min', videoId: '', summary: 'Build a thriving culture by vetting for both skill and godly character.' },
-            { id: 'le2', title: 'Strategic Networking & Mentor Alignment', track: 'leadership', type: 'Mini Course', duration: '3 min', videoId: '', summary: 'Build mutually beneficial relationships with advisors who accelerate growth.' },
-            { id: 'le3', title: 'Managing Stress & Anxiety as a Founder', track: 'leadership', type: 'Mini Course', duration: '3 min', videoId: '', summary: 'Practical spiritual and mental disciplines to conquer burnout and overwhelm.' },
-            { id: 'le4', title: 'The Entrepreneur’s Wellness & Sabbath Rhythm', track: 'leadership', type: 'Mini Course', duration: '3 min', videoId: '', summary: 'Honor the Sabbath rhythm for sustained long-term leadership capacity.' }
-        ];
-
-        let completedCourses = JSON.parse(localStorage.getItem('sg_completed') || '[]');
-        let currentActiveCourseId = null;
-
-        // Initialize App
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            renderCourses(courses);
-            updateProgressStats();
-        });
-
-        // Tab Switching
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
-
-            // Update Nav styling
-            ['dashboard', 'learning', 'campaigns', 'mentorship'].forEach(t => {
-                const btn = document.getElementById(`nav-${t}`);
-                if(btn) {
-                    if(t === tabId) {
-                        btn.className = "text-sm font-medium transition hover:text-magenta text-magenta border-b-2 border-magenta pb-1";
-                    } else {
-                        btn.className = "text-sm font-medium transition hover:text-magenta text-gray-300 pb-1";
-                    }
-                }
-            });
-        }
-
-        // Render Courses in Hub
-        function renderCourses(list) {
-            const grid = document.getElementById('course-grid');
-            grid.innerHTML = '';
-
-            list.forEach(c => {
-                const isCompleted = completedCourses.includes(c.id);
-                const card = document.createElement('div');
-                card.className = "bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex flex-col justify-between border border-gray-100";
-                card.innerHTML = `
-                    <div>
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="text-xs font-bold uppercase px-2.5 py-1 rounded ${c.track === 'core' ? 'bg-magenta text-white' : 'bg-navy/10 text-navy'}">${c.track.toUpperCase()}</span>
-                            <span class="text-xs text-gray-500 font-semibold flex items-center space-x-1"><i data-lucide="clock" class="w-3 h-3"></i><span>${c.duration}</span></span>
-                        </div>
-                        <h3 class="font-bold text-lg text-navy mb-2">${c.title}</h3>
-                        <p class="text-sm text-gray-600 mb-4">${c.summary}</p>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <span class="text-xs font-semibold ${isCompleted ? 'text-green-600 flex items-center space-x-1' : 'text-gray-400'}">
-                            ${isCompleted ? '<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>Completed</span>' : 'Pending'}
-                        </span>
-                        <button onclick="openLessonModal('${c.id}')" class="bg-navy hover:bg-navy-light text-white text-sm font-bold px-4 py-2 rounded-lg transition">Open Lesson</button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-            lucide.createIcons();
-        }
-
-        // Track Filtering
-        function filterTrack(trackName) {
-            document.querySelectorAll('.track-btn').forEach(btn => {
-                btn.className = "track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white text-gray-700 hover:bg-gray-100 border border-gray-200";
-            });
-            event.target.className = "track-btn px-4 py-2 rounded-lg text-sm font-semibold bg-navy text-white shadow";
-
-            if(trackName === 'all') {
-                renderCourses(courses);
-            } else {
-                const filtered = courses.filter(c => c.track === trackName);
-                renderCourses(filtered);
-            }
-        }
-
-        // Search Filtering
-        function filterCourses() {
-            const query = document.getElementById('course-search').value.toLowerCase();
-            const filtered = courses.filter(c => c.title.toLowerCase().includes(query) || c.summary.toLowerCase().includes(query));
-            renderCourses(filtered);
-        }
-
-        // Lesson Modal Logic
-        function openLessonModal(courseId) {
-            const course = courses.find(c => c.id === courseId);
-            if(!course) return;
-            currentActiveCourseId = courseId;
-
-            document.getElementById('modal-track-badge').innerText = course.track.toUpperCase() + ' • ' + course.duration;
-            document.getElementById('modal-title').innerText = course.title;
-            document.getElementById('modal-framework').innerText = course.summary;
-
-            const videoContainer = document.getElementById('video-container');
-            if(course.videoId && course.videoId.trim() !== '') {
-                videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${course.videoId}" class="w-full h-full" frameborder="0" allowfullscreen></iframe>`;
-            } else {
-                videoContainer.innerHTML = `
-                    <div class="p-8 text-center">
-                        <div class="w-16 h-16 bg-magenta/20 text-magenta rounded-full flex items-center justify-center mx-auto mb-4"><i data-lucide="book-open" class="w-8 h-8"></i></div>
-                        <h4 class="font-bold text-lg text-white mb-2">Study Guide & Script Mode</h4>
-                        <p class="text-sm text-gray-300 max-w-md mx-auto mb-4">Video recording for this module is currently in progress. Read through the framework below and complete your action prompt to earn credit.</p>
-                        <span class="inline-block bg-magenta text-white text-xs font-bold px-3 py-1 rounded-full">${course.duration} Lesson</span>
-                    </div>
-                `;
-            }
-
-            const isCompleted = completedCourses.includes(courseId);
-            const completeBtnText = document.getElementById('complete-btn-text');
-            completeBtnText.innerText = isCompleted ? 'Completed ✓' : 'Mark as Complete';
-
-            document.getElementById('lesson-modal').classList.remove('hidden');
-            lucide.createIcons();
-        }
-
-        function closeLessonModal() {
-            document.getElementById('lesson-modal').classList.add('hidden');
-            currentActiveCourseId = null;
-        }
-
-        function toggleCompleteCurrentLesson() {
-            if(!currentActiveCourseId) return;
-            const index = completedCourses.indexOf(currentActiveCourseId);
-            if(index > -1) {
-                completedCourses.splice(index, 1);
-            } else {
-                completedCourses.push(currentActiveCourseId);
-            }
-            localStorage.setItem('sg_completed', JSON.stringify(completedCourses));
-            updateProgressStats();
-            renderCourses(courses);
-            closeLessonModal();
-        }
-
-        function updateProgressStats() {
-            const count = completedCourses.length;
-            document.getElementById('overall-progress-text').innerText = `${count} / 40`;
-            const pct = (count / 40) * 100;
-            document.getElementById('overall-progress-bar').style.width = `${pct}%`;
-        }
-
-        function saveFounderNotes() {
-            alert('Founder strategy notes saved successfully!');
-        }
-
-        function openAuthModal() {
-            alert('Firebase Authentication prompt: Sign in or Register your founder profile.');
-        }
-
-        function openCampaignModal() {
-            alert('Campaign creator modal: Submit your rewards-based crowdfunding project for review.');
-        }
-
-        function openPledgeModal(projectName) {
-            alert(`Pledge window opened for "${projectName}". Select your backing tier to support this kingdom venture.`);
-        }
-    </script>
-</body>
-</html>
+            { id: 'b2', title: 'Selling with Storytelling: Communicating Impact
