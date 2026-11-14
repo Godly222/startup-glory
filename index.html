@@ -253,16 +253,18 @@ Back Change Agent Campaigns
 
 <!-- ==================== PAGE 2: LEARNING HUB ==================== -->
 <section id="page-learning" class="page-view hidden">
+<section id="page-learning" class="page-view hidden">
 <div class="bg-gradient-to-b from-white to-slate-50 py-12 md:py-16 border-b border-slate-200/60">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<!-- 4-Stage Learning Banner -->
-<div class="bg-navy-900 rounded-3xl p-8 sm:p-10 text-white shadow-xl mb-10">
+
+<div class="bg-navy-900 rounded-3xl p-8 sm:p-10 text-white shadow-xl mb-10 grid md:grid-cols-3 gap-8 items-center">
+<div class="md:col-span-2">
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-magenta-500/20 border border-magenta-400/40 text-magenta-300 text-xs font-bold uppercase tracking-wider mb-3">
 Stage 1: Biblical Stewardship & Venture Readiness
 </div>
 <h2 class="text-2xl sm:text-4xl font-black mb-3">Equipping Change Agents for Societal Reformation</h2>
 <p class="text-slate-300 text-xs sm:text-sm max-w-2xl mb-6">
-Complete foundational modules in ethical unit economics, reward-tier campaign design, and Go To Market execution to qualify for 1-on-1 mentorship and rewards-based crowdfunding.
+Complete the modules below to qualify for 1-on-1 mentorship and rewards-based crowdfunding. Video lessons run 3, 5, or 8 minutes, each with an action worksheet.
 </p>
 <div class="flex flex-wrap gap-2 text-[11px] font-extrabold">
 <span class="px-3 py-1.5 rounded-lg bg-magenta-500 text-white">1. Learn</span>
@@ -271,20 +273,25 @@ Complete foundational modules in ethical unit economics, reward-tier campaign de
 <span class="px-3 py-1.5 rounded-lg bg-navy-800 text-slate-300">→ 4. Go To Market</span>
 </div>
 </div>
+<div class="bg-navy-950/80 p-5 rounded-2xl border border-slate-700/50">
+<div class="flex justify-between text-xs mb-2">
+<span class="text-slate-300 font-bold">Modules completed</span>
+<span id="learn-progress-text" class="text-magenta-400 font-black">0 / 0</span>
+</div>
+<div class="w-full bg-slate-700/60 rounded-full h-2.5 overflow-hidden">
+<div id="learn-progress-bar" class="bg-magenta-500 h-full rounded-full transition-all duration-500" style="width:0%"></div>
+</div>
+</div>
+</div>
 
-<div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
 <h3 class="text-xl font-black text-navy-900">Curriculum Modules</h3>
-<div class="flex flex-wrap gap-2">
-<button onclick="renderCourses('all')" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold bg-navy-900 text-white">All Tracks</button>
-<button onclick="renderCourses('planning')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 border border-slate-200 hover:bg-slate-100">Business Model</button>
-<button onclick="renderCourses('finance')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 border border-slate-200 hover:bg-slate-100">Cash Flow & Milestones</button>
-<button onclick="renderCourses('gtm')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 border border-slate-200 hover:bg-slate-100">Go To Market (GTM)</button>
-</div>
+<input type="text" id="learn-search" oninput="setLearnQuery(this.value)" placeholder="Search modules..." class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-navy-900 focus:outline-none focus:border-magenta-500 md:w-72">
 </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="courses-grid">
-<!-- Populated dynamically via JS -->
-</div>
+<div id="learn-filters" class="flex flex-wrap gap-2 mb-8"></div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="learn-grid"></div>
 </div>
 </div>
 </section>
