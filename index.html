@@ -253,10 +253,11 @@ Back Change Agent Campaigns
 
 <!-- ==================== PAGE 2: LEARNING HUB ==================== -->
 <section id="page-learning" class="page-view hidden">
-<div class="bg-gradient-to-b from-white to-slate-50 py-12 md:py-16 border-b border-slate-200/60">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-navy-950 py-12 md:py-16 relative overflow-hidden">
+<div class="absolute inset-0 opacity-[0.07] pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:18px_18px]"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-<div class="bg-navy-900 rounded-3xl p-8 sm:p-10 text-white shadow-xl mb-10 grid md:grid-cols-3 gap-8 items-center">
+<div class="bg-gradient-to-br from-navy-900 to-navy-800 border border-magenta-500/40 rounded-3xl p-8 sm:p-10 text-white shadow-xl mb-10 grid md:grid-cols-3 gap-8 items-center">
 <div class="md:col-span-2">
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-magenta-500/20 border border-magenta-400/40 text-magenta-300 text-xs font-bold uppercase tracking-wider mb-3">
 Stage 1: Biblical Stewardship & Venture Readiness
@@ -280,12 +281,13 @@ Complete the modules below to qualify for 1-on-1 mentorship and rewards-based cr
 <div class="w-full bg-slate-700/60 rounded-full h-2.5 overflow-hidden">
 <div id="learn-progress-bar" class="bg-magenta-500 h-full rounded-full transition-all duration-500" style="width:0%"></div>
 </div>
+<p id="learn-sync-note" class="text-[11px] text-slate-300 mt-3">Sign in to save your progress across devices.</p>
 </div>
 </div>
 
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
-<h3 class="text-xl font-black text-navy-900">Curriculum Modules</h3>
-<input type="text" id="learn-search" oninput="setLearnQuery(this.value)" placeholder="Search modules..." class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-navy-900 focus:outline-none focus:border-magenta-500 md:w-72">
+<h3 class="text-xl font-black text-white">Curriculum Modules</h3>
+<input type="text" id="learn-search" oninput="setLearnQuery(this.value)" placeholder="Search modules..." class="px-4 py-2 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-navy-900 focus:outline-none focus:border-magenta-500 md:w-72">
 </div>
 
 <div id="learn-filters" class="flex flex-wrap gap-2 mb-8"></div>
@@ -504,6 +506,12 @@ Support vetted Christian entrepreneurs launching projects that transform communi
 <span class="text-xs font-semibold text-slate-300 tracking-tight mt-1.5">Entrepreneurs Learn. Grow. Impact Lives.</span>
 </div>
 <p class="text-slate-300">&copy; 2026 Startup Glory Platform. All rights reserved.</p>
+</div>
+<div class="border-t border-slate-700 pt-6 text-center">
+<p class="text-xs text-slate-300 leading-relaxed">Startup Glory is an initiative of <span class="font-extrabold text-white">Helping Hands Missionary Ministry</span>, a USA 501(c) organization committed to Advancing The Programme of God.</p>
+</div>
+</div>
+</footer>
 <!-- MODAL: BACK A CAMPAIGN (KICKSTARTER-STYLE REWARD TIERS) -->
 <div id="supportModal" class="fixed inset-0 bg-navy-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
 <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-8">
@@ -688,6 +696,7 @@ collection,
 doc,
 setDoc,
 addDoc,
+getDoc,
 onSnapshot,
 serverTimestamp
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
@@ -819,9 +828,12 @@ onAuthStateChanged(auth, (user) => {
 if (user && !user.isAnonymous) {
 window.dbState.currentUser = { uid: user.uid, email: user.email };
 updateAuthUI(user.email);
+if (window.setSyncNote) window.setSyncNote(true);
+window.sgCloudLoad(user.uid);
 } else {
 window.dbState.currentUser = null;
 resetAuthUI();
+if (window.setSyncNote) window.setSyncNote(false);
 }
 subscribeCampaigns();
 });
@@ -893,7 +905,7 @@ name,
 email,
 role: 'Change Agent / Backer',
 createdAt: serverTimestamp()
-});
+}, { merge: true });
 
 btn.innerText = "Create Free Account";
 window.closeModal('registerModal');
@@ -906,6 +918,7 @@ window.showToast(`Registration error: ${err.message}`);
 
 window.handleLogout = async function() {
 await signOut(auth);
+if (window.sgProgress) window.sgProgress.reset();
 try {
 await signInAnonymously(auth);
 } catch (e) {}
@@ -1004,6 +1017,28 @@ console.warn("Firestore prayer count fallback:", err.message);
 const regionVal = document.getElementById('region-filter-select')?.value || 'all';
 window.renderCampaigns(window.dbState.activeCategory, regionVal);
 window.showToast(`🙏 Prayer commitment recorded for ${camp.name}!`);
+};
+
+// Learning progress sync (one small document per member: users/{uid})
+window.sgCloudLoad = async function(uid) {
+try {
+const snap = await getDoc(doc(db, 'users', uid));
+const d = snap.exists() ? snap.data() : {};
+const merged = window.sgProgress.merge({ completed: d.completed || [], notes: d.notes || {} });
+await setDoc(doc(db, 'users', uid), { completed: merged.completed, notes: merged.notes }, { merge: true });
+} catch (err) {
+console.warn("Progress sync fallback (check Firestore rules for the users collection):", err.message);
+}
+};
+
+window.sgCloudSave = async function(partial) {
+const u = auth.currentUser;
+if (!u || u.isAnonymous) return;
+try {
+await setDoc(doc(db, 'users', u.uid), partial, { merge: true });
+} catch (err) {
+console.warn("Progress save fallback:", err.message);
+}
 };
 
 // Initialize Firebase Auth Flow on window load
@@ -1324,38 +1359,54 @@ let done = store.get('sg_completed', []);
 let notes = store.get('sg_notes', {});
 let track = 'all', query = '', active = null;
 
+const TS = {
+core: ['#E60067', '#FFFFFF'], starting: ['#F97316', '#0A192F'], branding: ['#A855F7', '#FFFFFF'],
+website: ['#0EA5E9', '#0A192F'], marketing: ['#84CC16', '#0A192F'], money: ['#10B981', '#0A192F'],
+operations: ['#3B82F6', '#FFFFFF'], legal: ['#14B8A6', '#0A192F'], ai: ['#6366F1', '#FFFFFF'],
+leadership: ['#F59E0B', '#0A192F']
+};
+
 function renderFilters() {
 const el = document.getElementById('learn-filters');
 if (!el) return;
 el.innerHTML = ['all', ...Object.keys(TRACKS)].map(k => {
 const n = k === 'all' ? COURSES.length : COURSES.filter(c => c.track === k).length;
 const label = k === 'all' ? 'All Tracks' : TRACKS[k];
+const dot = k === 'all' ? '' : `<span class="inline-block w-2 h-2 rounded-full mr-1.5" style="background:${TS[k][0]}"></span>`;
 const cls = k === track
-? 'font-extrabold bg-navy-900 text-white'
-: 'font-bold bg-white text-navy-900 border border-slate-200 hover:bg-slate-100';
-return `<button onclick="setLearnTrack('${k}')" class="px-3.5 py-1.5 rounded-lg text-xs ${cls}">${label} (${n})</button>`;
+? 'font-extrabold bg-magenta-500 text-white border border-magenta-500'
+: 'font-bold bg-navy-800 text-slate-200 border border-slate-600 hover:bg-navy-900 hover:border-slate-400';
+return `<button onclick="setLearnTrack('${k}')" class="px-3.5 py-1.5 rounded-lg text-xs transition ${cls}">${dot}${label} (${n})</button>`;
 }).join('');
 }
 
 function card(c) {
+const [col, fg] = TS[c.track];
+const core = c.track === 'core';
 const isDone = done.includes(c.id);
-const badge = c.track === 'core' ? 'bg-magenta-500 text-white' : 'bg-magenta-50 text-magenta-600';
+const shell = core ? 'bg-navy-900 border-magenta-500/60' : (isDone ? 'bg-emerald-50 border-emerald-300' : 'bg-white border-slate-200');
+const ring = core && isDone ? ' ring-2 ring-emerald-400' : '';
+const title = core ? 'text-white' : 'text-navy-900';
+const body = core ? 'text-slate-300' : 'text-navy-900/75';
+const clock = core ? 'text-slate-300' : 'text-navy-900/60';
+const line = core ? 'border-slate-700' : 'border-slate-200/80';
 const status = isDone
-? '<span class="text-xs font-extrabold text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Completed</span>'
-: '<span class="text-xs font-bold text-navy-900/50">Not started</span>';
+? `<span class="text-xs font-extrabold ${core ? 'text-emerald-300' : 'text-emerald-600'} flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Completed</span>`
+: `<span class="text-xs font-bold ${core ? 'text-slate-400' : 'text-navy-900/50'}">Not started</span>`;
+const btn = core ? 'bg-magenta-500 hover:bg-magenta-600' : 'bg-navy-900 hover:bg-slate-800';
 return `
-<div class="bg-white rounded-2xl border border-slate-200 p-6 card-shadow flex flex-col justify-between">
-<div>
+<div class="rounded-2xl border ${shell}${ring} overflow-hidden flex flex-col justify-between shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_-8px_rgba(230,0,103,0.55)]" style="border-top:6px solid ${col}">
+<div class="p-6">
 <div class="flex justify-between items-center mb-3">
-<span class="text-[10px] font-extrabold px-2.5 py-1 rounded ${badge}">${TRACKS[c.track]}</span>
-<span class="text-xs text-navy-900/60 font-bold flex items-center gap-1"><i class="fa-regular fa-clock"></i> ${c.duration}</span>
+<span class="text-[10px] font-extrabold px-2.5 py-1 rounded" style="background:${col};color:${fg}">${TRACKS[c.track]}</span>
+<span class="text-xs ${clock} font-bold flex items-center gap-1"><i class="fa-regular fa-clock"></i> ${c.duration}</span>
 </div>
-<h3 class="font-black text-navy-900 text-sm mb-2">${c.title}</h3>
-<p class="text-xs text-navy-900/75 leading-relaxed mb-4">${c.summary}</p>
+<h3 class="font-black ${title} text-sm mb-2">${c.title}</h3>
+<p class="text-xs ${body} leading-relaxed">${c.summary}</p>
 </div>
-<div class="flex items-center justify-between pt-4 border-t border-slate-100">
+<div class="flex items-center justify-between px-6 py-4 border-t ${line}">
 ${status}
-<button onclick="openLesson('${c.id}')" class="px-4 py-2 bg-navy-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition">${isDone ? 'Review Lesson' : 'Open Lesson'}</button>
+<button onclick="openLesson('${c.id}')" class="px-4 py-2 ${btn} text-white font-bold text-xs rounded-xl transition">${isDone ? 'Review Lesson' : 'Open Lesson'}</button>
 </div>
 </div>`;
 }
@@ -1422,6 +1473,7 @@ window.saveLessonNotes = function () {
 if (!active) return;
 notes[active] = document.getElementById('lesson-notes').value;
 store.set('sg_notes', notes);
+if (window.sgCloudSave) window.sgCloudSave({ notes: { [active]: notes[active] } });
 window.showToast('Notes saved.');
 };
 
@@ -1430,12 +1482,35 @@ if (!active) return;
 const wasDone = done.includes(active);
 done = wasDone ? done.filter(id => id !== active) : [...done, active];
 store.set('sg_completed', done);
+if (window.sgCloudSave) window.sgCloudSave({ completed: done });
 window.closeLesson();
 window.renderCourses();
 window.showToast(wasDone ? 'Lesson marked as not complete.' : 'Lesson completed.');
+};
+
+window.sgProgress = {
+merge(cloud) {
+done = [...new Set([...done, ...(cloud.completed || [])])];
+notes = { ...(cloud.notes || {}), ...notes };
+store.set('sg_completed', done);
+store.set('sg_notes', notes);
+window.renderCourses();
+return { completed: done, notes };
+},
+reset() {
+done = []; notes = {};
+store.set('sg_completed', done);
+store.set('sg_notes', notes);
+window.renderCourses();
+}
+};
+window.setSyncNote = function (signedIn) {
+const el = document.getElementById('learn-sync-note');
+if (el) el.innerText = signedIn ? 'Your progress is saved to your account.' : 'Sign in to save your progress across devices.';
 };
 })();
 </script>
 
 </body>
+
 </html>
