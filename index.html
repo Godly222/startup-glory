@@ -255,7 +255,7 @@ Back Change Agent Campaigns
 <section id="page-learning" class="page-view hidden">
 <div class="bg-gradient-to-b from-white to-slate-50 py-12 md:py-16 border-b border-slate-200/60">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
- 
+
 <div class="bg-navy-900 rounded-3xl p-8 sm:p-10 text-white shadow-xl mb-10 grid md:grid-cols-3 gap-8 items-center">
 <div class="md:col-span-2">
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-magenta-500/20 border border-magenta-400/40 text-magenta-300 text-xs font-bold uppercase tracking-wider mb-3">
@@ -282,19 +282,17 @@ Complete the modules below to qualify for 1-on-1 mentorship and rewards-based cr
 </div>
 </div>
 </div>
- 
+
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
 <h3 class="text-xl font-black text-navy-900">Curriculum Modules</h3>
 <input type="text" id="learn-search" oninput="setLearnQuery(this.value)" placeholder="Search modules..." class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-navy-900 focus:outline-none focus:border-magenta-500 md:w-72">
 </div>
- 
+
 <div id="learn-filters" class="flex flex-wrap gap-2 mb-8"></div>
- 
+
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="learn-grid"></div>
 </div>
 </div>
-</section>
- 
 </section>
 
 <!-- ==================== PAGE 3: MENTORSHIP NETWORK ==================== -->
@@ -666,8 +664,8 @@ Create Free Account
 </div>
 </div>
 </div>
- 
- <!-- TOAST NOTIFICATION -->
+
+<!-- TOAST NOTIFICATION -->
 <div id="toast" class="fixed bottom-6 right-6 z-50 hidden items-center gap-3 bg-navy-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-indigo-800/60 text-xs font-bold">
 <i class="fa-solid fa-circle-check text-magenta-400 text-base"></i>
 <span id="toast-message">Notification</span>
@@ -715,12 +713,6 @@ totalPledgedAllTime: 1245600,
 totalPrayersAllTime: 14320,
 activeCategory: 'all',
 prayedCampaignIds: new Set(),
-courses: [
-{ id: 'c1', title: 'Kingdom Stewardship & Viable Business Models', category: 'planning', time: '8 mins', img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80' },
-{ id: 'c2', title: 'Customer Acquisition & GTM Playbook', category: 'gtm', time: '12 mins', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80' },
-{ id: 'c3', title: 'Cash Flow & Milestone Budgeting', category: 'finance', time: '10 mins', img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80' },
-{ id: 'c4', title: 'Designing Kickstarter-Style Backer Rewards', category: 'planning', time: '8 mins', img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=500&q=80' }
-],
 campaigns: [
 {
 id: 'camp-1',
@@ -1138,7 +1130,7 @@ document.querySelectorAll('nav button').forEach(b => b.classList.remove('nav-act
 const activeBtn = document.getElementById(`nav-${pageId}`);
 if (activeBtn) activeBtn.classList.add('nav-active');
 };
-`
+
 window.toggleMobileMenu = function() {
 document.getElementById('mobileMenu').classList.toggle('hidden');
 };
@@ -1263,7 +1255,7 @@ website: 'Website & eCommerce', marketing: 'Online Marketing', money: 'Managing 
 operations: 'Operations', legal: 'Legal Essentials', ai: 'AI & Security',
 leadership: 'Leadership & Wellness'
 };
- 
+
 // [id, track, type, duration, title, summary]
 // To embed a video, add its unlisted YouTube ID to VIDEO_IDS below, e.g. { c1: 'AbC123xyz' }
 const VIDEO_IDS = {};
@@ -1272,50 +1264,50 @@ const RAW = [
 ['c2','core','Core Deep Dive','8 min','Spheres of Societal Reformation','Align your business model with cultural transformation across arts, business, education, family, and government.'],
 ['c3','core','Core Deep Dive','8 min','Spiritual Resilience & Founder Integrity','Cultivate deep spiritual fortitude, character integrity, and resilience to weather the storms of entrepreneurship.'],
 ['c4','core','Core Deep Dive','8 min','Crowdfunding Readiness & Reward Design','Design irresistible, non-debt rewards campaigns that invite backers to partner with your mission.'],
- 
+
 ['s1','starting','Standard Course','5 min','How to Start a Business: Entity & Mission Setup','Establish your legal entity and articulate a bulletproof redemptive mission statement.'],
 ['s2','starting','Standard Course','5 min','Find Your Fit: Satisfying the Market Need','Identify your true target audience and validate product-market resonance.'],
 ['s3','starting','Standard Course','5 min','Level Up Your Goal Setting & Strategic Vision','Implement actionable milestones and strategic frameworks for sustainable growth.'],
 ['s4','starting','Mini Course','3 min','Getting Your Pitch Right for Impact Backers','Craft a compelling 3-minute pitch that converts casual observers into passionate backers.'],
 ['s5','starting','Standard Course','5 min','Buying or Partnering with an Existing Enterprise','Evaluate opportunities to acquire or strategically partner with operating ventures.'],
- 
+
 ['b1','branding','Standard Course','5 min','Defining Your Redemptive Brand Identity','Build visual and verbal brand guidelines that communicate excellence and trust.'],
 ['b2','branding','Standard Course','5 min','Selling with Storytelling: Communicating Impact','Use narrative arcs to connect deeply with customer values and mission alignment.'],
 ['b3','branding','Standard Course','5 min','Driving Demand for Your Product or Mission','Generate organic anticipation and waitlists prior to your official launch.'],
 ['b4','branding','Mini Course','3 min','Captivate Your Audience with Clear Messaging','Eliminate confusion with the StoryBrand framework adapted for kingdom ventures.'],
- 
+
 ['w1','website','Standard Course','5 min','Put Your Website to Work: High-Converting Pages','Structure landing pages that guide visitors effortlessly toward backing or purchasing.'],
 ['w2','website','Standard Course','5 min','Optimizing eCommerce & Backer Reward Fulfillment','Set up seamless checkout, reward tiers, and automated fulfillment pipelines.'],
 ['w3','website','Standard Course','5 min','Customer Journey Mapping: From Visitor to Backer','Map every touchpoint of your customer lifecycle for maximum retention.'],
 ['w4','website','Standard Course','5 min','A/B Testing: Optimizing Conversions & Pages','Test headlines, imagery, and call-to-action buttons to maximize conversion rates.'],
- 
+
 ['m1','marketing','Standard Course','5 min','Intro to Online Growth & Digital Reach','Establish your baseline digital footprint across search, social, and email channels.'],
 ['m2','marketing','Standard Course','5 min','The Basics of Search Engine Optimization (SEO)','Rank consistently on search engines for high-intent keywords in your niche.'],
 ['m3','marketing','Standard Course','5 min','Social Media Marketing & Content Calendars','Build repeatable posting rhythms across platforms without burning out.'],
 ['m4','marketing','Standard Course','5 min','Email Marketing: Building a Loyal Supporter List','Own your audience list with high-value newsletters and automated sequences.'],
 ['m5','marketing','Standard Course','5 min','Effective Funnels & Ethical Paid Advertising','Scale customer acquisition profitably using meta and search ads.'],
- 
+
 ['mo1','money','Standard Course','5 min','Money Mindset: Stewardship Over Scarcity','Overcome fear and scarcity mindsets to steward enterprise finances with boldness.'],
 ['mo2','money','Standard Course','5 min','Get Beyond Break-Even & Setting Smart Prices','Calculate accurate cost structures and profit margins that ensure viability.'],
 ['mo3','money','Standard Course','5 min','Track Your Finances & Digital Financial Tools','Implement clean bookkeeping and dashboard tracking for cash flow health.'],
 ['mo4','money','Mini Course','3 min','Paying Yourself & Calculating Sustainable Salaries','Determine equitable, sustainable founder compensation without draining cash reserves.'],
 ['mo5','money','Standard Course','5 min','Finding Ethical Capital & Crowdfunding Readiness','Prepare your financials for rewards-based crowdfunding success.'],
- 
+
 ['op1','operations','Standard Course','5 min','Operating Efficiency & Workflow Systems','Eliminate bottlenecks and automate repetitive administrative workflows.'],
 ['op2','operations','Standard Course','5 min','Building Remote & Distributed Teams Effectively','Hire, onboard, and manage high-trust remote team members across time zones.'],
 ['op3','operations','Standard Course','5 min','Supplier Readiness & Ethical Sourcing Standards','Ensure your supply chain reflects uncompromising integrity and quality.'],
 ['op4','operations','Mini Course','3 min','When to Upgrade Your Tools & Equipment','Make smart capital expenditure decisions without taking on unnecessary debt.'],
- 
+
 ['l1','legal','Standard Course','5 min','Getting It in Writing: Contracts & Agreements','Protect your enterprise with robust client, vendor, and partner agreements.'],
 ['l2','legal','Standard Course','5 min','Protecting Intellectual Property & Trademarks','Secure your brand assets, patents, and copyright ownership globally.'],
 ['l3','legal','Standard Course','5 min','Planning for the Unexpected: Crisis Resilience','Build operational continuity plans to withstand unexpected market shocks.'],
 ['l4','legal','Mini Course','3 min','Know Your Hazards & Compliance Basics','Navigate local regulatory compliance and licensing requirements effortlessly.'],
- 
+
 ['ai1','ai','Standard Course','5 min','Getting Started with AI for Business Productivity','Leverage generative AI to multiply your daily output in content and operations.'],
 ['ai2','ai','Mini Course','3 min','How to Train Your AI to Match Your Brand Voice','Customize AI prompts and custom instructions to sound authentically like you.'],
 ['ai3','ai','Mini Course','3 min','AI & Intellectual Property Guardrails','Understand copyright nuances and data privacy best practices when using AI tools.'],
 ['ai4','ai','Standard Course','5 min','Digital Defense: Intro to Cyber Security','Secure customer data, passwords, and cloud infrastructure against breaches.'],
- 
+
 ['le1','leadership','Standard Course','5 min','Recruiting & Onboarding for Character & Competence','Build a thriving culture by vetting for both skill and godly character.'],
 ['le2','leadership','Mini Course','3 min','Strategic Networking & Mentor Alignment','Build mutually beneficial relationships with advisors who accelerate growth.'],
 ['le3','leadership','Mini Course','3 min','Managing Stress & Anxiety as a Founder','Practical spiritual and mental disciplines to conquer burnout and overwhelm.'],
@@ -1323,7 +1315,7 @@ const RAW = [
 ];
 const COURSES = RAW.map(([id, track, type, duration, title, summary]) =>
 ({ id, track, type, duration, title, summary, videoId: VIDEO_IDS[id] || '' }));
- 
+
 const store = {
 get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
 set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
@@ -1331,7 +1323,7 @@ set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 let done = store.get('sg_completed', []);
 let notes = store.get('sg_notes', {});
 let track = 'all', query = '', active = null;
- 
+
 function renderFilters() {
 const el = document.getElementById('learn-filters');
 if (!el) return;
@@ -1344,7 +1336,7 @@ const cls = k === track
 return `<button onclick="setLearnTrack('${k}')" class="px-3.5 py-1.5 rounded-lg text-xs ${cls}">${label} (${n})</button>`;
 }).join('');
 }
- 
+
 function card(c) {
 const isDone = done.includes(c.id);
 const badge = c.track === 'core' ? 'bg-magenta-500 text-white' : 'bg-magenta-50 text-magenta-600';
@@ -1367,7 +1359,7 @@ ${status}
 </div>
 </div>`;
 }
- 
+
 function updateProgress() {
 const total = COURSES.length;
 const n = done.filter(id => COURSES.some(c => c.id === id)).length;
@@ -1376,7 +1368,7 @@ const b = document.getElementById('learn-progress-bar');
 if (t) t.innerText = `${n} / ${total}`;
 if (b) b.style.width = `${Math.round((n / total) * 100)}%`;
 }
- 
+
 window.renderCourses = function () {
 renderFilters();
 updateProgress();
@@ -1392,15 +1384,15 @@ grid.innerHTML = list.length ? list.map(card).join('') : `
 <p class="text-xs text-navy-900/70 mt-1">Clear the search box or pick another track.</p>
 </div>`;
 };
- 
+
 window.setLearnTrack = function (k) { track = k; window.renderCourses(); };
 window.setLearnQuery = function (v) { query = v; window.renderCourses(); };
- 
+
 function updateCompleteBtn() {
 const isDone = done.includes(active);
 document.getElementById('lesson-complete-text').innerText = isDone ? 'Completed. Undo' : 'Mark as complete';
 }
- 
+
 window.openLesson = function (id) {
 const c = COURSES.find(x => x.id === id);
 if (!c) return;
@@ -1419,20 +1411,20 @@ document.getElementById('lesson-video').innerHTML = c.videoId
 updateCompleteBtn();
 window.openModal('lessonModal');
 };
- 
+
 window.closeLesson = function () {
 document.getElementById('lesson-video').innerHTML = '';
 active = null;
 window.closeModal('lessonModal');
 };
- 
+
 window.saveLessonNotes = function () {
 if (!active) return;
 notes[active] = document.getElementById('lesson-notes').value;
 store.set('sg_notes', notes);
 window.showToast('Notes saved.');
 };
- 
+
 window.toggleLessonComplete = function () {
 if (!active) return;
 const wasDone = done.includes(active);
@@ -1444,8 +1436,6 @@ window.showToast(wasDone ? 'Lesson marked as not complete.' : 'Lesson completed.
 };
 })();
 </script>
- 
+
 </body>
 </html>
-
-
